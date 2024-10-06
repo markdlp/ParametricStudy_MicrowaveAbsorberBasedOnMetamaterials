@@ -1,0 +1,136 @@
+\documentclass[12pt]{report}
+\usepackage{geometry}
+\geometry{ b4paper, total={220mm,320mm}, left=20mm,
+            top=15mm, headheight=33pt,includeheadfoot}
+
+\usepackage[parfill]{parskip}  % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{mathtools}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{booktabs, caption, colortbl}
+\usepackage{pdflscape}
+\usepackage{appendix}
+\usepackage{microtype}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{fancyhdr, lastpage, setspace}
+\usepackage{caption, subcaption, zref-totpages}
+
+\usepackage{fontspec}
+
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksopen=true,
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+    pdftitle={Parametric Study of a Microwave Absorver Based on Metamaterials}
+}
+
+\usepackage{polyglossia}
+%\setmainlanguage{greek}
+\setdefaultlanguage{english}
+\setotherlanguages{greek}
+
+\usepackage[ backend=biber, bibencoding=utf8, style=ieee]{biblatex}
+\addbibresource{ref.bib}
+
+\listfiles
+
+\urlstyle{same}
+
+\rhead{\includegraphics[width=1cm]{ece.png}}
+\lhead{\includegraphics[height=1cm]{uowm.png}}
+
+\fancyfoot{}
+\fancyfoot[RO]{\thepage /\ztotpages}
+
+\graphicspath{ {img} }
+
+%\setmainfont[Kerning=On,Mapping=tex-text]{Linux Libertine}
+\setmainfont[Numbers=Lining]{Georgia}
+\setsansfont{Lato}
+\setmonofont{Corbel}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+\onehalfspacing
+
+\AddToHook{env/landscape/begin}
+ {%
+  \clearpage
+  \pagestyle{empty}
+  \AddToHook{shipout/background}[sven/page]
+    {
+     \put(0.9\paperwidth,-0.5\paperheight)%adapt values
+      {\rotatebox{90}{\thepage}}
+    }%
+ }     
+
+\AddToHook{env/landscape/after}
+ {\RemoveFromHook{shipout/background}[sven/page]}
+
+
+\lhead{Markos Delaportas} \rhead{ece01316@uowm.gr} \cfoot{Page \thepage\ of
+\pageref{lastpage}}
+
+\title{ \textsf{Parametric Study of a Microwave Absorber Based on Metamaterials.}\\
+    %\textsf{Special Project}\\
+    \textsf{\Large Department of Electrical \& Computer Engineering}\\
+    \textsf{\large University of Western Macedonia}
+} \author{\textsf{Markos Delaportas} \\ ece01316@uowm.gr}
+\date{\textsf{October 2024}}
+
+\begin{document}
+\maketitle
+
+\textbf{ \textit{Abstract} -- Microwave absorbers play a crucial role in modern
+    telecommunications and electronic systems by mitigating unwanted electromagnetic
+    interference (EMI) and enhancing the performance of various devices. These absorbers are
+    essential in applications ranging from radar systems and anechoic chambers to consumer
+    electronics and medical devices. Traditional microwave absorbers, while effective, often
+    suffer from limitations such as bulkiness and narrow bandwidth.Metamaterial-based
+    microwave absorbers offer a promising alternative due to their unique electromagnetic
+    properties, which are not found in natural materials. These engineered materials can
+    achieve near-unity absorption across a wide range of frequencies, making them highly
+    efficient. The advantages of metamaterial absorbers include their thin profile,
+    lightweight nature, and the ability to tailor their absorption characteristics through
+    precise structural design. This makes them ideal for applications requiring compact and
+    efficient EMI mitigation. Additionally, metamaterial absorbers can be designed to operate
+    over multiple frequency bands, providing versatility and enhanced performance in complex
+    electromagnetic environments.}
+
+{\let\clearpage\relax \tableofcontents} \thispagestyle{empty}    
+%\tableofcontents
+
+
+\section{\textsf{Introduction}}
+    The study begins with a theoretical exploration of absorber devices and the unique
+    properties of metamaterials that make them suitable for electromagnetic wave absorption.
+    Following this, the report details the implementation of a specific microwave absorber
+    device using advanced simulation software, highlighting the practical aspects of device
+    design and performance evaluation. Finally, the report addresses the parametric design and
+    optimization of the device, emphasizing the importance of fine-tuning structural
+    parameters to achieve optimal absorption characteristics. Through this comprehensive
+    approach, the report aims to provide a thorough understanding of the principles, design
+    methodologies, and practical applications of metamaterial-based microwave absorbers.
+
+\input{Theoretical Study}
+\input{Simulation}
+\input{Optimization}
+\end{document}

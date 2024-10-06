@@ -1,0 +1,9 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg'
+[386] biber-MSWIN64:340> INFO - === 
+[490] Biber.pm:419> INFO - Reading 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf'
+[1305] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[1396] bbl.pm:660> INFO - Writing 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl' with encoding 'UTF-8'
+[1396] bbl.pm:763> INFO - Output to tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl
+[1397] Biber.pm:131> WARN - The file 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf' does not contain any citations!
+[1397] Biber.pm:133> INFO - WARNINGS: 1
