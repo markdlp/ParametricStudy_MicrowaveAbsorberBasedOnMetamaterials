@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.12.18)  31 OCT 2024 01:28
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.12.18)  31 OCT 2024 01:35
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex"
@@ -880,21 +880,21 @@ Package polyglossia Info: Default language is english.
  (c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-greek.ldf
 File: gloss-greek.ldf polyglossia: module for Greek
 Module polyglossia Info: Language data for greek
-(polyglossia)            lefthyphenmin	1
 (polyglossia)            loader	loadhyph-el-polyton.tex
+(polyglossia)            righthyphenmin	1
 (polyglossia)            hyphenation	
-(polyglossia)            patterns	hyph-el-polyton.pat.txt
+(polyglossia)            lefthyphenmin	1
 (polyglossia)            synonyms	polygreek
-(polyglossia)            righthyphenmin	1 on input line 21
+(polyglossia)            patterns	hyph-el-polyton.pat.txt on input line 21
 Module polyglossia Info: Language greek was not yet loaded; created with id 2 on input line 21
  (c:/texlive/2023/texmf-dist/tex/latex/polyglossia/xgreek-fixes.def)
 Module polyglossia Info: Language data for monogreek
-(polyglossia)            lefthyphenmin	1
 (polyglossia)            loader	loadhyph-el-monoton.tex
+(polyglossia)            righthyphenmin	1
 (polyglossia)            hyphenation	
-(polyglossia)            patterns	hyph-el-monoton.pat.txt
+(polyglossia)            lefthyphenmin	1
 (polyglossia)            synonyms	
-(polyglossia)            righthyphenmin	1 on input line 147
+(polyglossia)            patterns	hyph-el-monoton.pat.txt on input line 147
 Module polyglossia Info: Language monogreek was not yet loaded; created with id 3 on input line 147
 Package polyglossia Info: Option: Greek, variant=monotonic.
 Package polyglossia Info: Option: Greek, numerals=greek.
@@ -1473,12 +1473,12 @@ LaTeX Info: Redefining \ttfamily on input line 2.
  ("./Theoretical Study.tex"
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1]) (./Simulation.tex) (./Optimization.tex)
-<img/uowm.png, id=60, 428.60126pt x 82.3075pt>
+<img/uowm.png, id=65, 428.60126pt x 82.3075pt>
 File: img/uowm.png Graphic file (type png)
 <use img/uowm.png>
 Package luatex.def Info: img/uowm.png  used on input line 136.
 (luatex.def)             Requested size: 148.16188pt x 28.45274pt.
-<img/ece.png, id=61, 491.8375pt x 491.8375pt>
+<img/ece.png, id=66, 491.8375pt x 491.8375pt>
 File: img/ece.png Graphic file (type png)
 <use img/ece.png>
 Package luatex.def Info: img/ece.png  used on input line 136.
@@ -1664,19 +1664,19 @@ Package logreq Info: Writing requests to '"MarkosDelaportas_Parametric Study of 
 )
 
 Here is how much of LuaTeX's memory you used:
- 50141 strings out of 476506
+ 50143 strings out of 476506
  125056,2373549 words of node,token memory allocated
  707 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 2 margin_kern, 4 glyph, 9 attribute, 80 glue_spec, 9 attribute_list, 2 write nodes
-   avail lists: 1:1,2:377,3:181,4:98,5:220,6:51,7:6100,8:66,9:223,10:13,11:640
- 70982 multiletter control sequences out of 65536+600000
+   avail lists: 1:2,2:411,3:183,4:100,5:234,6:57,7:6070,8:66,9:235,10:13,11:634
+ 70983 multiletter control sequences out of 65536+600000
  111 fonts using 26581727 bytes
  102i,15n,101p,1576b,1967s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Windows/Fonts/georgiai.ttf><c:/texlive/2023/texmf-dist/fonts/truetype/typoland/lato/Lato-Bold.ttf><c:/Windows/Fonts/georgiab.ttf><c:/Windows/Fonts/georgiaz.ttf><c:/Windows/Fonts/georgia.ttf><c:/texlive/2023/texmf-dist/fonts/truetype/typoland/lato/Lato-Regular.ttf>
-Output written on MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf (4 pages, 168843 bytes).
+Output written on MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf (4 pages, 169478 bytes).
 
-PDF statistics: 129 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 131072)
- 72 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 134 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 131072)
+ 80 words of extra memory for PDF output out of 10000 (max. 100000000)
 

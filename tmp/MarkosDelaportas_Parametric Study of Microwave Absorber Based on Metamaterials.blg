@@ -1,15 +1,15 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
-[1] Config.pm:310> INFO - Logfile is 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg'
-[404] biber-MSWIN64:340> INFO - === 
-[521] Biber.pm:419> INFO - Reading 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf'
-[1067] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
-[1139] Biber.pm:4419> INFO - Processing section 0
-[1169] Biber.pm:4610> INFO - Looking for bibtex file 'ref.bib' for section 0
-[1254] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1286] bibtex.pm:1519> INFO - Found BibTeX data source 'ref.bib'
-[1472] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1472] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1472] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1472] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1489] bbl.pm:660> INFO - Writing 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl' with encoding 'UTF-8'
-[1493] bbl.pm:763> INFO - Output to tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl
+[2] Config.pm:307> INFO - This is Biber 2.19
+[2] Config.pm:310> INFO - Logfile is 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg'
+[652] biber-MSWIN64:340> INFO - === 
+[813] Biber.pm:419> INFO - Reading 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf'
+[1381] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
+[1433] Biber.pm:4419> INFO - Processing section 0
+[1465] Biber.pm:4610> INFO - Looking for bibtex file 'ref.bib' for section 0
+[1580] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1613] bibtex.pm:1519> INFO - Found BibTeX data source 'ref.bib'
+[1795] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1795] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1796] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1796] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[1823] bbl.pm:660> INFO - Writing 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl' with encoding 'UTF-8'
+[1838] bbl.pm:763> INFO - Output to tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl
