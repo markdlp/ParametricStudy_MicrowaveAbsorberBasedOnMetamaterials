@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.12.18)  31 OCT 2024 01:19
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.12.18)  31 OCT 2024 01:28
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex"
@@ -880,21 +880,21 @@ Package polyglossia Info: Default language is english.
  (c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-greek.ldf
 File: gloss-greek.ldf polyglossia: module for Greek
 Module polyglossia Info: Language data for greek
-(polyglossia)            hyphenation	
-(polyglossia)            loader	loadhyph-el-polyton.tex
-(polyglossia)            righthyphenmin	1
-(polyglossia)            patterns	hyph-el-polyton.pat.txt
 (polyglossia)            lefthyphenmin	1
-(polyglossia)            synonyms	polygreek on input line 21
+(polyglossia)            loader	loadhyph-el-polyton.tex
+(polyglossia)            hyphenation	
+(polyglossia)            patterns	hyph-el-polyton.pat.txt
+(polyglossia)            synonyms	polygreek
+(polyglossia)            righthyphenmin	1 on input line 21
 Module polyglossia Info: Language greek was not yet loaded; created with id 2 on input line 21
  (c:/texlive/2023/texmf-dist/tex/latex/polyglossia/xgreek-fixes.def)
 Module polyglossia Info: Language data for monogreek
-(polyglossia)            hyphenation	
-(polyglossia)            loader	loadhyph-el-monoton.tex
-(polyglossia)            righthyphenmin	1
-(polyglossia)            patterns	hyph-el-monoton.pat.txt
 (polyglossia)            lefthyphenmin	1
-(polyglossia)            synonyms	 on input line 147
+(polyglossia)            loader	loadhyph-el-monoton.tex
+(polyglossia)            hyphenation	
+(polyglossia)            patterns	hyph-el-monoton.pat.txt
+(polyglossia)            synonyms	
+(polyglossia)            righthyphenmin	1 on input line 147
 Module polyglossia Info: Language monogreek was not yet loaded; created with id 3 on input line 147
 Package polyglossia Info: Option: Greek, variant=monotonic.
 Package polyglossia Info: Option: Greek, numerals=greek.
@@ -1656,16 +1656,8 @@ img/uowm.png
  img/ece.png
  ***********
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `"MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials"
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to '"MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials".run.xml'.
 
 \openout1 = MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.run.xml
@@ -1681,7 +1673,7 @@ Here is how much of LuaTeX's memory you used:
  111 fonts using 26581727 bytes
  102i,15n,101p,1576b,1967s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Windows/Fonts/georgiai.ttf><c:/texlive/2023/texmf-dist/fonts/truetype/typoland/lato/Lato-Bold.ttf><c:/Windows/Fonts/georgiab.ttf><c:/Windows/Fonts/georgiaz.ttf><c:/Windows/Fonts/georgia.ttf><c:/texlive/2023/texmf-dist/fonts/truetype/typoland/lato/Lato-Regular.ttf>
-Output written on MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf (4 pages, 168695 bytes).
+Output written on MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf (4 pages, 168843 bytes).
 
 PDF statistics: 129 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream
