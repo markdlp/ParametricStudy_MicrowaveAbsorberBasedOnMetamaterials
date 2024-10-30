@@ -1,9 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
-[0] Config.pm:310> INFO - Logfile is 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg'
-[386] biber-MSWIN64:340> INFO - === 
-[490] Biber.pm:419> INFO - Reading 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf'
-[1305] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
-[1396] bbl.pm:660> INFO - Writing 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl' with encoding 'UTF-8'
-[1396] bbl.pm:763> INFO - Output to tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl
-[1397] Biber.pm:131> WARN - The file 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf' does not contain any citations!
-[1397] Biber.pm:133> INFO - WARNINGS: 1
+[1] Config.pm:310> INFO - Logfile is 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg'
+[306] biber-MSWIN64:340> INFO - === 
+[390] Biber.pm:419> INFO - Reading 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf'
+[752] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
+[824] Biber.pm:4419> INFO - Processing section 0
+[863] Biber.pm:4610> INFO - Looking for bibtex file 'ref.bib' for section 0
+[994] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1028] bibtex.pm:1519> INFO - Found BibTeX data source 'ref.bib'
+[1194] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1194] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1194] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1194] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[1205] bbl.pm:660> INFO - Writing 'tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl' with encoding 'UTF-8'
+[1210] bbl.pm:763> INFO - Output to tmp\MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl

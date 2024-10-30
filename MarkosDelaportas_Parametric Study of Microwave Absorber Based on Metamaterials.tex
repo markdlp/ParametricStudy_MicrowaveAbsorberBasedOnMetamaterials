@@ -14,7 +14,6 @@
 \usepackage{booktabs, caption, colortbl}
 \usepackage{pdflscape}
 \usepackage{appendix}
-\usepackage{microtype}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -25,9 +24,13 @@
 \usepackage{amsmath}
 
 \usepackage{fancyhdr, lastpage, setspace}
+\pagestyle{fancy}
 \usepackage{caption, subcaption, zref-totpages}
 
 \usepackage{fontspec}
+\usepackage{microtype}
+
+\usepackage{polyglossia}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -39,7 +42,6 @@
     pdftitle={Parametric Study of a Microwave Absorver Based on Metamaterials}
 }
 
-\usepackage{polyglossia}
 %\setmainlanguage{greek}
 \setdefaultlanguage{english}
 \setotherlanguages{greek}
@@ -85,10 +87,6 @@
 \AddToHook{env/landscape/after}
  {\RemoveFromHook{shipout/background}[sven/page]}
 
-
-\lhead{Markos Delaportas} \rhead{ece01316@uowm.gr} \cfoot{Page \thepage\ of
-\pageref{lastpage}}
-
 \title{ \textsf{Parametric Study of a Microwave Absorber Based on Metamaterials.}\\
     %\textsf{Special Project}\\
     \textsf{\Large Department of Electrical \& Computer Engineering}\\
@@ -97,6 +95,7 @@
 \date{\textsf{October 2024}}
 
 \begin{document}
+
 \maketitle
 
 \textbf{ \textit{Abstract} -- Microwave absorbers play a crucial role in modern
@@ -125,12 +124,15 @@
     Following this, the report details the implementation of a specific microwave absorber
     device using advanced simulation software, highlighting the practical aspects of device
     design and performance evaluation. Finally, the report addresses the parametric design and
-    optimization of the device, emphasizing the importance of fine-tuning structural
-    parameters to achieve optimal absorption characteristics. Through this comprehensive
-    approach, the report aims to provide a thorough understanding of the principles, design
-    methodologies, and practical applications of metamaterial-based microwave absorbers.
+    optimization of the device, fine-tuning structural parameters to achieve optimal absorption
+    characteristics. Through this comprehensive approach, the report aims to provide a thorough
+    understanding of the principles, design methodologies, and practical applications of
+    metamaterial-based microwave absorbers.
 
 \input{Theoretical Study}
 \input{Simulation}
 \input{Optimization}
+
+\printbibliography
+
 \end{document}

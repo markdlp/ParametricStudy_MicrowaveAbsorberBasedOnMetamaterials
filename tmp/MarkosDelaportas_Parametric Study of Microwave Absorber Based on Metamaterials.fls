@@ -172,10 +172,6 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/appendix/appendix.sty
-INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
-INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype-luatex.def
-INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.lua
-INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT c:/texlive/2023/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex
 INPUT c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
@@ -272,6 +268,19 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.cfg
 INPUT C:/texlive/2023/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
+INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype-luatex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.lua
+INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+INPUT c:/texlive/2023/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+INPUT c:/texlive/2023/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/polyglossia.lua
+INPUT c:/texlive/2023/texmf-var/tex/generic/config/language.dat.lua
+INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-latex.lde
 INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
@@ -291,15 +300,6 @@ INPUT c:/texlive/2023/texmf-dist/tex/generic/stringenc/stringenc.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/polyglossia.sty
-INPUT c:/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-INPUT c:/texlive/2023/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
-INPUT c:/texlive/2023/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
-INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/polyglossia.lua
-INPUT c:/texlive/2023/texmf-var/tex/generic/config/language.dat.lua
-INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-latex.lde
 INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-english.ldf
 INPUT c:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-greek.ldf
 INPUT c:/texlive/2023/texmf-dist/tex/generic/hyph-utf8/patterns/txt/hyph-el-polyton.pat.txt
@@ -400,6 +400,10 @@ OUTPUT tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Meta
 INPUT ./Theoretical Study.tex
 INPUT ./Simulation.tex
 INPUT ./Optimization.tex
+INPUT ./img/uowm.png
+INPUT ./img/uowm.png
+INPUT ./img/ece.png
+INPUT ./img/ece.png
 INPUT ./tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.aux
 INPUT ./tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.run.xml
 OUTPUT tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.run.xml

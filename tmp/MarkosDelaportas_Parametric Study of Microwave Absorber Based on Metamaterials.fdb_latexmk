@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials"] 1727971566 "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf" "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl" "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials" 1727975209 0
+["biber tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials"] 1730328315 "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf" "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl" "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials" 1730329681 0
   "./ref.bib" 1727969203 4066 16a3f4ce5d244fd3aeaf59ffab26ec24 ""
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf" 1727975205 106792 e3fd56b17dd877401ff8450df66ff27c "lualatex"
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bcf" 1730329679 107379 d3fd259904510c3f76543aa83361958c "lualatex"
   (generated)
   "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl"
   "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.blg"
   (rewritten before read)
-["lualatex"] 1727975190 "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex" "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf" "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials" 1727975209 0
+["lualatex"] 1730329666 "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex" "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf" "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials" 1730329681 0
   "C:/texlive/2023/texmf-var/luatex-cache/generic/fonts/hb/0993df6e8d72bdf9f86882b3c57a6b0bcf4a3f7da20b58de58f0f992d7f5cb16.luc" 1703087973 69868 2a38116df811e322422dfdf079824b15 ""
   "C:/texlive/2023/texmf-var/luatex-cache/generic/fonts/hb/30de64cd01fce8515e6a292738d98c753a66c9031b352cf391f969031010f406.luc" 1703088093 171637 71885d59fc4b09b1f4a8d3db0f4ad6d4 ""
   "C:/texlive/2023/texmf-var/luatex-cache/generic/fonts/hb/3d17b918f59e3778068352985b351c0bda2d603a1e004d867ad033428b9dd08c.luc" 1703087973 67090 879d4b562245d07245b08e1bc656b9c6 ""
@@ -23,12 +23,13 @@
   "C:/texlive/2023/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc" 1703087970 127662 0a289f6e4166bf2ede469e929d8f1940 ""
   "C:/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1727972664 23959 807f2e3410a5afc2dbfcc02df2182902 ""
   "C:/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1710536413 295650 37b2271d11072637a36ef8189f81b5bc ""
-  "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex" 1727975187 4761 57f7369d7932b2cd4c717c9fb47ed998 ""
+  "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.tex" 1730329664 4674 3681ddae1a9633b9a2846c3615fee66c ""
   "Optimization.tex" 1727970105 31 c2df0c220355e57e11ddbc20afa0b355 ""
   "Simulation.tex" 1727970105 29 b446dce39549f93a38947da0829ee7db ""
-  "Theoretical Study.tex" 1727970105 36 61ed421ec58df2d4b847b9e04b4db12a ""
+  "Theoretical Study.tex" 1730328150 2241 3e27f41a95fb4b0e2f6f8e1b71daefc9 ""
   "c:/Windows/Fonts/georgia.ttf" 1651900758 219712 96922b4abbc90606b4e0e85db42a7e30 ""
   "c:/Windows/Fonts/georgiab.ttf" 1651900758 207476 5c1ac2fcf8f1339f79c323a66f763d0d ""
+  "c:/Windows/Fonts/georgiai.ttf" 1651900758 208444 3ff1867689f68a5b19cf320f0c155f86 ""
   "c:/Windows/Fonts/georgiaz.ttf" 1651900758 211780 f070f16e8b3524ad233c160c6a15328c ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1702842503 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1702842503 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -360,11 +361,13 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1702850661 4754855 ee84c5ca52598111d6998201d577c986 ""
   "c:/texlive/2023/texmf-var/tex/generic/config/language.dat.lua" 1702850630 18554 55fefb172ab6a6b8466411fb4f9d587f ""
   "c:/texlive/2023/texmf-var/web2c/luahbtex/lualatex.fmt" 1702850963 12255480 a9846e439ed4e93849be33b69f2a691a ""
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.aux" 1727975205 1227 ca92e099853302c51b0a1972e5547698 "lualatex"
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl" 1727973170 486 ee04f40f768daeed26442158e95aba61 "biber tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials"
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.out" 1727975205 434 0f32a685c4160b62df00eb6584b7d4bd "lualatex"
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.run.xml" 1727975205 3023 ac15167804c858af947c31287a72fd47 "lualatex"
-  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.toc" 1727975205 393 18b500a05fed93f1c012c98478f710cf "lualatex"
+  "img/ece.png" 1710544323 76218 fa09f245a1716ae00e55a659d2829ddb ""
+  "img/uowm.png" 1710544661 6792 06ea2a92fd9365ac7c95270b328fb485 ""
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.aux" 1730329679 2114 a7b06b7332231ccce72a50bb1e4a54f3 "lualatex"
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.bbl" 1730329436 9579 e5bc66266d5b755c7f567f00c3f1f515 "biber tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials"
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.out" 1730329679 964 83cc44e897986f0ef92c7f5f2cf6ed79 "lualatex"
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.run.xml" 1730329679 3023 8462b275948404671ef6299c40bc7da9 "lualatex"
+  "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.toc" 1730329679 700 9885ef631f82fa1a102ce70d243a772c "lualatex"
   (generated)
   "MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.pdf"
   "tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.aux"

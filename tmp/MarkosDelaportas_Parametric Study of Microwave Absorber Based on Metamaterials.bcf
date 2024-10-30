@@ -2365,6 +2365,9 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">ref.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">biswas_ultra-wideband_2022</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">abdulkarim_review_2022</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">abdulkarim_review_2022</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
@@ -2376,4 +2379,13 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
 </bcf:controlfile>
