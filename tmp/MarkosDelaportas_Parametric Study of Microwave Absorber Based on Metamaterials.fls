@@ -376,9 +376,7 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2023/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
-INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT ./tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.toc
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
@@ -393,9 +391,17 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.toc
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 OUTPUT tmp/MarkosDelaportas_Parametric Study of Microwave Absorber Based on Metamaterials.toc
 INPUT ./Theoretical Study.tex
 INPUT ./Simulation.tex
