@@ -152,5 +152,25 @@
         "Metamaterials",
         "σταυροπολώσεων",
         "υποζώνης"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#d3a5a9",
+        "activityBar.background": "#d3a5a9",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#45803f",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#d3a5a9",
+        "statusBar.background": "#c28388",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#b16167",
+        "statusBarItem.remoteBackground": "#c28388",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#c28388",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#c2838899",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#c28388"
 }
