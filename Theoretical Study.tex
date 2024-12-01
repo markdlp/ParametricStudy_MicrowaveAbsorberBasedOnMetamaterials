@@ -2,7 +2,7 @@
     Metamaterials are artificially engineered materials with unique electromagnetic properties
     not found in nature. They are designed with specific geometrical structures that allow them
     to exhibit properties like negative refractive index, reverse Snell's law, and right/left-handed
-    behavior. 
+    behavior. The first to coin the term of metamaterial absorbers was Victor Veselago \cite{veselago_left_2006}.
     
     An MMA typically comprises three layers: 
     \begin{itemize}
@@ -32,7 +32,12 @@
 
     \subsection{\textsf{Impedance Matching Free Space}}
         An absorber can be represented as a transmission line equivalent
-        \cite{biswas_ultra-wideband_2022}. In order to maximize the absorbance\dots 
+        \cite{biswas_ultra-wideband_2022}. In order to maximize the absorbance we need to optimize
+        against a specific variable:
+        \begin{equation}
+            A = 1 - |\Gamma|^2 - |T|^2
+            \label{eq:A}
+        \end{equation}
 
     \subsection{\textsf{Magnetic Resonance}}
         Is what can be achieved with closed loop structures \cite{abdulkarim_review_2022}.
@@ -44,4 +49,5 @@
         Plasma frequency of a material is the electron cloud oscillations for a specific material.
         \begin{equation}
             \omega_p = \sqrt{\frac{Ne^2}{m\epsilon_0}}
-        \end{equation} 
+        \end{equation}
+    
