@@ -2,7 +2,7 @@
     The simulation has be created using the CST software in order to implement a configuration such as shown in \cite{zhang_design_2023}.
 
     \subsection{\textsf{CST Implementation}}
-        First we should implement the layout in CST which consist of three layers:
+        The vertical layout implemented in CST consists of a three layer structure:
         \begin{itemize}
             \item Dielectric substrate
             \item Air
@@ -10,13 +10,13 @@
         \end{itemize}
 
         The dielectric substrate will also embody a metallic component made of the same material as the metal backplate; copper
-        (5.96 \mu $10^7$ S/m) that is.
+        (5.96 \mu $10^7$ S/m).
 
         At first I'll place the substrate without the resonance layer:  
         \begin{figure}[h]
             \centering
             \includegraphics[width=\textwidth]{substrate.png}
-            \caption{FR\-4 Dielectric Substrate}
+            \caption{FR-4 Dielectric Substrate}
             \label{img:substrate}
         \end{figure}
 
@@ -120,6 +120,23 @@
             \includegraphics[width=\textwidth]{mesh.png}
             \caption{Ring Mesh for reference}
             \label{img:ringMesh}
+        \end{figure}
+
+        Now the Mesh that ends up including the arrows is as such:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{mesh.png}
+            \caption{Ring Mesh for reference}
+            \label{img:RingAndArrowMesh}
+        \end{figure}
+
+        Taking a look in the E-Field after the simulation it behaves as such:
+        \begin{figure}[h]
+            \centering
+            \animategraphics[width=\textwidth, autoplay, loop, controls]
+            {8}{gif/MMA_UnitCell_E_27e2MHz_Zmax1-}{0}{71}
+            \caption{UnitCell E field 2.7GHz Zmax(1)}
+            \label{fig:UnitCell_E_27e2MHz_Zmax1}
         \end{figure}
 
     \subsection{\textsf{Alternative Modeling Methods}}
