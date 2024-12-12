@@ -25,7 +25,7 @@
 
         I'll place the two other layers below Z=0, turn on the orthographic side
         view to remove shadows and voila: 
-        \begin{figure}[b]
+        \begin{figure}[h]
             \centering
             \includegraphics[width=\textwidth]{verticaLayout.png}
             \caption{Vertical Layout Orthographic View}
@@ -35,7 +35,7 @@
 
         Now its time to add the ring that is of the same material and thickness as the backplate and lies
         on top of the dielectric substrate. 
-        \begin{figure}[b]
+        \begin{figure}[h]
             \centering
             \includegraphics[width=\textwidth]{ring.png}
             \caption{Ring Resonator}
@@ -133,11 +133,14 @@
         Taking a look in the E-Field after the simulation it behaves as such:
         \begin{figure}[h]
             \centering
-            \animategraphics[width=\textwidth, autoplay, loop, controls]
-            {8}{gif/MMA_UnitCell_E_27e2MHz_Zmax1-}{0}{71}
-            \caption{UnitCell E field 2.7GHz Zmax(1)}
-            \label{fig:UnitCell_E_27e2MHz_Zmax1}
+            \animategraphics[
+                width=0.8\textwidth, keepaspectratio, autoplay, type=png,
+                controls, loop
+            ]{8}{gif/MMA_UnitCell_E_27e2MHz_Zmax1_}{00}{71}
+            \caption{Electric Field in 2.7GHz Zmax(1)}
+            \label{img:E_2.7_Zmax1}
         \end{figure}
+        
 
     \subsection{\textsf{Alternative Modeling Methods}}
         In order to simulate the absorber there are also a few other ways to go about it:
