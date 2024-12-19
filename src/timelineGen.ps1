@@ -1,5 +1,5 @@
 # Directory containing the PNG files
-$directory = "img\gif"
+$directory = "img\"
 
 # Output timeline file
 $timelineFile = Join-Path $directory "timeline.txt"

@@ -12,45 +12,26 @@
         The dielectric substrate will also embody a metallic component made of the same material as the metal backplate; copper
         (5.96 \mu $10^7$ S/m).
 
-        At first I'll place the substrate without the resonance layer:  
+        At first the FR-4 substrate is placed without the metal resonance layer and then the two other layers - all below Z=0,
+        turning on the orthographic side view the layout is as (\ref{img:layout}).
         \begin{figure}[h]
             \centering
-            \includegraphics[width=\textwidth]{substrate.png}
-            \caption{FR-4 Dielectric Substrate}
-            \label{img:substrate}
+            \includegraphics[width=0.4\textwidth]{substrate.png}\hfil
+            \includegraphics[width=0.4\textwidth]{verticaLayout.png}
+            \caption{Basic Vertical Layout}
+            \label{img:layout}
         \end{figure}
 
-        Later I'll place the metal resonance layer as well but there are a number of possible candidates
-        I think of trying to simulate whereas the vertical layout is pretty much fixed.
-
-        I'll place the two other layers below Z=0, turn on the orthographic side
-        view to remove shadows and voila: 
+        Then the ring is added so that is of the same material and thickness as the backplate and lays
+        on top of the dielectric substrate as shown in (\ref{img:ring}) 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=\textwidth]{verticaLayout.png}
-            \caption{Vertical Layout Orthographic View}
-            \label{img:verticaLayout}
-        \end{figure}
-        I think it really gives a sense of scale as the air layer truly shadows the other two.
-
-        Now its time to add the ring that is of the same material and thickness as the backplate and lies
-        on top of the dielectric substrate. 
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=\textwidth]{ring.png}
+            \includegraphics[width=0.6\textwidth]{ring.png}
             \caption{Ring Resonator}
             \label{img:ring}
         \end{figure}
 
-        Then I will move the substrate, air and backplate layers all below Z=0 just ti make is easier
-        with designing the arrows. For this I make the assumption that both the arrow body and point are
-        a=0.5mm of width. 
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=\textwidth]{parallel.png}
-            \caption{Initial Arrow Base}
-            \label{img:parallel}
-        \end{figure}
+        The assumption made is that both the arrow body and point are $\alpha=0.5mm$ of width.
         In order to accurately place all the curve points that define the arrow some basic calculations
         shall be made. The two points of the arrow base lie exactly on the arc of the ring and are 
         equidistant from curve y=x so the in order to find their cartesian coordinates the following
@@ -88,15 +69,6 @@
             \end{array}
         \end{equation}
 
-        Which results in two points/quadrant so picking out the two points of the 1st quadrant and 
-        inserting them to CST the arrow body is parallel again 
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=\textwidth]{corretArrowBase.png}
-            \caption{Correct Arrow Base}
-            \label{img:corretArrowBase}
-        \end{figure}
-
         Then the arrow is mirrored against the X, the Y and the XY planes in order to reach all four 
         sides of the cell, then the face is covered with copper and a height of d=0.035mm is also 
         attributed, which is why it was important to move all other layers below Z=0. 
@@ -107,20 +79,9 @@
             \caption{Mirroring Arrow and Cover}
             \label{img:mirrorAndCover}
         \end{figure}
-        
 
-        Now I'll try and perform a simulation using the frequency solver in CST just to get an idea 
-        how the component behaves, the boundaries will be periodic along the XY plate and I will add
-        absorbing conditions along the Z axis.
-
-        For reference the mesh with only the ring element on the surface ends up such as: 
-        
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=\textwidth]{mesh.png}
-            \caption{Ring Mesh for reference}
-            \label{img:ringMesh}
-        \end{figure}
+        Now to perform a simulation using the frequency solver in CST, the boundaries will be periodic
+        along the XY plate absorbing conditions will be added along the Z axis.
 
         Now the Mesh that ends up including the arrows is as such:
         \begin{figure}[h]
@@ -130,17 +91,21 @@
             \label{img:RingAndArrowMesh}
         \end{figure}
 
-        Taking a look in the E-Field after the simulation it behaves as such:
+        Taking a look in the Electrical Field for $Z_{max}(1)$ after the simulation
+        it behaves as such (\ref{img:E_Zmax1})
         \begin{figure}[h]
             \centering
-            \animategraphics[
-                width=0.8\textwidth, keepaspectratio, autoplay, type=png,
-                controls, loop
-            ]{8}{gif/MMA_UnitCell_E_27e2MHz_Zmax1_}{00}{71}
-            \caption{Electric Field in 2.7GHz Zmax(1)}
-            \label{img:E_2.7_Zmax1}
+            \animategraphics[label=E_Zmax1_027e2MHz,loop,autoplay, scale=0.22]{8}
+            {UnitCell_E_Zmax1_027e2MHz/UnitCell_E_Zmax1_027e2MH-}{0}{89}\hfil
+            \animategraphics[label=E_Zmax1_077e2MHz,loop,autoplay, scale=0.22]{8}
+            {UnitCell_E_Zmax1_077e2MHz/UnitCell_E_Zmax1_077e2MH-}{0}{89}\hfil
+            \animategraphics[label=E_Zmax1_127e2MHz,loop,autoplay, scale=0.22]{8}
+            {UnitCell_E_Zmax1_127e2MHz/UnitCell_E_Zmax1_127e2MH-}{0}{89}
+            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
+            \label{img:E_Zmax1}
         \end{figure}
         
+
 
     \subsection{\textsf{Alternative Modeling Methods}}
         In order to simulate the absorber there are also a few other ways to go about it:
@@ -149,5 +114,3 @@
             \item Electrical circuit equivalent
             \item Mathematical modeling \& code (MATLAB)
         \end{itemize}
-
-        So at first I start by designing a basic layout in CST..

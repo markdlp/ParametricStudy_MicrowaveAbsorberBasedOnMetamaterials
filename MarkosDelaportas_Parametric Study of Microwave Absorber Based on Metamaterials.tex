@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[12pt]{article}
 \usepackage{geometry}
 \geometry{ b4paper, total={220mm,320mm}, left=20mm,
             top=15mm, headheight=33pt,includeheadfoot}
@@ -18,7 +18,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-\usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{amsmath}
@@ -34,8 +33,13 @@
 
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
 
-%\usepackage{multimedia, media9}
-\usepackage{animate, media9}
+%\usepackage{multimedia}
+
+%\usepackage{xmpmulti}
+\usepackage{media9}
+
+\usepackage{graphicx}
+\usepackage{animate}
 %\def\pdfpageref{\pdffeedback pageref}
 \usepackage{hyperref}
 \hypersetup{
@@ -65,6 +69,7 @@
 \fancyfoot[RO]{\thepage /\ztotpages}
 
 \graphicspath{ {img} }
+\addmediapath{vdo}
 
 %\setmainfont[Kerning=On,Mapping=tex-text]{Linux Libertine}
 \setmainfont[Numbers=Lining]{Georgia}
