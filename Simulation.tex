@@ -80,6 +80,33 @@
             \label{img:mirrorAndCover}
         \end{figure}
 
+        The following is a series of cuts in the resonance layer (boolean subtractions)
+        in order to add the resistors between the copper faces.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.4\textwidth]{subtract.png}\hfil
+            \includegraphics[width=.4\textwidth]{subtracted.png}
+            \caption{Cuts Near the Arrows}
+            \label{img:arrowCuts}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.4\textwidth]{subtractRing.png}\hfil
+            \includegraphics[width=.4\textwidth]{subtractedRing.png}
+            \caption{Cuts Near the Ring}
+            \label{img:ringCuts}
+        \end{figure}
+
+        Then the resistors are added connecting to the center points of the faces
+        created but the previous subtractions
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.6\textwidth]{faceCenterPoint.png}
+            \caption{Resistor Placement}
+            \label{img:resistors}
+        \end{figure}
+
         Now to perform a simulation using the frequency solver in CST, the boundaries will be periodic
         along the XY plate absorbing conditions will be added along the Z axis.
 
@@ -91,19 +118,25 @@
             \label{img:RingAndArrowMesh}
         \end{figure}
 
-        Taking a look in the Electrical Field for $Z_{max}(1)$ after the simulation
-        it behaves as such (\ref{img:E_Zmax1})
+        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation and before any optimization
+        it behaves as such (\ref{img:S11_Zmax})
         \begin{figure}[h]
             \centering
-            \animategraphics[label=E_Zmax1_027e2MHz,loop,autoplay, scale=0.22]{8}
-            {UnitCell_E_Zmax1_027e2MHz/UnitCell_E_Zmax1_027e2MH-}{0}{89}\hfil
-            \animategraphics[label=E_Zmax1_077e2MHz,loop,autoplay, scale=0.22]{8}
-            {UnitCell_E_Zmax1_077e2MHz/UnitCell_E_Zmax1_077e2MH-}{0}{89}\hfil
-            \animategraphics[label=E_Zmax1_127e2MHz,loop,autoplay, scale=0.22]{8}
-            {UnitCell_E_Zmax1_127e2MHz/UnitCell_E_Zmax1_127e2MH-}{0}{89}
-            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
-            \label{img:E_Zmax1}
+            \includegraphics[width=0.6\textwidth]{ZmaxS11.png}
+            \caption{$S_{11}$ Parameter of $Z_{max}$}
+            \label{img:S11_Zmax}
         \end{figure}
+        %\begin{figure}[h]
+        %    \centering
+        %    \animategraphics[label=E_Zmax1_027e2MHz,loop,autoplay, scale=0.22]{8}
+        %    {UnitCell_E_Zmax1_027e2MHz/UnitCell_E_Zmax1_027e2MH-}{0}{89}\hfil
+        %    \animategraphics[label=E_Zmax1_077e2MHz,loop,autoplay, scale=0.22]{8}
+        %    {UnitCell_E_Zmax1_077e2MHz/UnitCell_E_Zmax1_077e2MH-}{0}{89}\hfil
+        %    \animategraphics[label=E_Zmax1_127e2MHz,loop,autoplay, scale=0.22]{8}
+        %    {UnitCell_E_Zmax1_127e2MHz/UnitCell_E_Zmax1_127e2MH-}{0}{89}
+        %    \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
+        %    \label{img:E_Zmax1}
+        %\end{figure}
         
 
 
