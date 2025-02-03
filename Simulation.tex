@@ -99,45 +99,75 @@
         \end{figure}
 
         Then the resistors are added connecting to the center points of the faces
-        created but the previous subtractions
+        created by the previous subtractions \ref{img:resistors} (it is important to state that performance
+        may be reduced in this implementation as better absorbance may be observed
+        if the connection height is: $d=0.035mm$).
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.6\textwidth]{faceCenterPoint.png}
+            \includegraphics[width=0.5\textwidth]{faceCenterPoint.png}
             \caption{Resistor Placement}
             \label{img:resistors}
         \end{figure}
 
         Now to perform a simulation using the frequency solver in CST, the boundaries will be periodic
-        along the XY plate absorbing conditions will be added along the Z axis.
-
-        Now the Mesh that ends up including the arrows is as such:
+        along the XY plate free space conditions will be added along the Z axis.
+        The Mesh that ends up being calculated is as \ref{img:RingAndArrowMesh}
         \begin{figure}[h]
             \centering
-            \includegraphics[width=\textwidth]{mesh.png}
+            \includegraphics[width=0.5\textwidth]{mesh.png}
             \caption{Ring Mesh for reference}
             \label{img:RingAndArrowMesh}
         \end{figure}
 
-        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation and before any optimization
-        it behaves as such (\ref{img:S11_Zmax})
+        In the figure for the Electrical field absorbance the surfaces can be observed for $Z_{max}1$
+        as in (\ref{img:E_Zmax1}).
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.6\textwidth]{ZmaxS11.png}
-            \caption{$S_{11}$ Parameter of $Z_{max}$}
-            \label{img:S11_Zmax}
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_027e2MHz.png}
+            }{video/E_Zmax1_027e2MHz.mkv} \hfil
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_077e2MHz.png}
+            }{video/E_Zmax1_077e2MHz.mkv} \hfil
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_127e2MHz.png}
+            }{video/E_Zmax1_127e2MHz.mkv}
+
+            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
+            \label{img:E_Zmax1}
         \end{figure}
-        %\begin{figure}[h]
-        %    \centering
-        %    \animategraphics[label=E_Zmax1_027e2MHz,loop,autoplay, scale=0.22]{8}
-        %    {UnitCell_E_Zmax1_027e2MHz/UnitCell_E_Zmax1_027e2MH-}{0}{89}\hfil
-        %    \animategraphics[label=E_Zmax1_077e2MHz,loop,autoplay, scale=0.22]{8}
-        %    {UnitCell_E_Zmax1_077e2MHz/UnitCell_E_Zmax1_077e2MH-}{0}{89}\hfil
-        %    \animategraphics[label=E_Zmax1_127e2MHz,loop,autoplay, scale=0.22]{8}
-        %    {UnitCell_E_Zmax1_127e2MHz/UnitCell_E_Zmax1_127e2MH-}{0}{89}
-        %    \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
-        %    \label{img:E_Zmax1}
-        %\end{figure}
-        
+
+        As well as for the $Z_{max}2$ the Electrical field can be observed as in (\ref{img:E_Zmax2}).
+        \begin{figure}[h]
+            \centering
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_027e2MHz.png}
+            }{video/E_Zmax2_027e2MHz.mkv} \hfil
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_077e2MHz.png}
+            }{video/E_Zmax2_077e2MHz.mkv} \hfil
+            \embedvideo{
+                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_127e2MHz.png}
+            }{video/E_Zmax2_127e2MHz.mkv}
+
+            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(2)$}
+            \label{img:E_Zmax2}
+        \end{figure}
+
+
+        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation as such (\ref{plt:S11_Zmax}).
+        \begin{figure}[h]
+            \centering
+            \resizebox{\textwidth}{.5\textwidth}{%
+                \begin{tikzpicture}
+                    \begin{axis}
+                        \addplot table[meta=s11] {data/s11.txt};
+                    \end{axis}
+                \end{tikzpicture}
+            }
+            \caption{\textsf{The $S_{11}$}}
+            \label{plt:S11_Zmax}
+        \end{figure}
 
 
     \subsection{\textsf{Alternative Modeling Methods}}
@@ -147,3 +177,6 @@
             \item Electrical circuit equivalent
             \item Mathematical modeling \& code (MATLAB)
         \end{itemize}
+        
+        After having completed the simulation it is easy to extract the impedance of the
+        absorber in order to try and implement the transmission line equivalent\dots
