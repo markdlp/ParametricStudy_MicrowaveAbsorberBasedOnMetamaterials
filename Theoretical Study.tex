@@ -10,21 +10,29 @@
         \item A dielectric substrate in the middle
         \item A bottom metallic ground plane
     \end{itemize}
-    This layered structure enables efficient absorption of electromagnetic waves.
+    As multi-layer structures in MMAs enable broadband absorption by creating multiple resonant
+    frequencies. By stacking different layers with varying properties, a wider range of 
+    frequencies can be absorbed effectively.
 
     Impedance matching is crucial for MMAs to minimize reflection and maximize absorption. 
     This is achieved when the impedance of the MMA is matched to the impedance of free space,
     ensuring that incident electromagnetic waves are absorbed rather than reflected.
-    
-    Reducing the plasma frequency of metals in MMAs allows them to operate effectively at 
-    lower frequencies, expanding their applicability to various frequency ranges. 
-    This is achieved by manipulating the density of free electron carriers in the metal.
 
-    Multi-layer structures in MMAs enable broadband absorption by creating multiple resonant
-    frequencies. By stacking different layers with varying properties, a wider range of 
-    frequencies can be absorbed effectively.
+    In order to evaluate the absorption of the microwave metamaterial absorber proposed
+    in this study \cite{zhang_design_2023} the reflection and transmission power shall be
+    calculated as well as the reflection coefficient. The bare necessary equations are
+    shown in (\ref{eq:Absorption}).
 
-    Designing MMAs for specific applications often presents challenges related to achieving 
-    the desired bandwidth and absorption ratio. Balancing these requirements while considering
-    factors like size, complexity, and cost can be difficult, requiring careful optimization
-    of the MMA structure and materials.
+    \begin{subequations}
+        \label{eq:Absorption}
+        \begin{align}
+            Z & = Z_0 \sqrt{\frac{\mu_r}{\epsilon_r}} \label{eq:Z} \\
+            \Gamma & = \frac{Z - Z_0}{Z + Z_0} \label{eq:ReflectionCoeff} \\
+            T & = \frac{2Z_0}{Z + Z_0} \label{eq:TransmissionCoeff} \\
+            A & = 1 - |\Gamma|^2 - |T|^2 \label{eq:Absorbance}
+        \end{align} 
+    \end{subequations}
+
+    However the Impedance across the frequency range shall be normalized and in order to be 
+    calculated the impedance of each layer shall be factored in but thankfully this is done
+    by CST.

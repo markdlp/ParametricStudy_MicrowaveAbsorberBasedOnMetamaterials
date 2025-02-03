@@ -86,13 +86,30 @@
 \usepackage{multicol}
 \usepackage{listings, matlab-prettifier}
 \usepackage{tikz}
+\usepackage{wrapfig}
 \usepackage{longtable}
 \usepackage{booktabs, caption, colortbl}
 \usepackage{pdflscape}
 \usepackage{appendix}
 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{
+    compat=1.18,
+    label style={font=\tiny\sffamily},
+    % legend style={font=\footnotesize},
+    % title style={font=\scriptsize}
+    no markers,
+    every axis plot/.append style={thin},
+    every tick label/.append style={font=\tiny\sffamily},
+    grid=both,
+    tick align=outside,
+    tickpos=left,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=3,
+    %enlargelimits={abs=0.5},
+    axis line style={latex-latex}
+}
 
 \usepackage{amssymb}
 \usepackage{enumitem}
@@ -216,6 +233,6 @@
 \input{Simulation}
 \input{Optimization}
 
-%\printbibliography
+\printbibliography
 
 \end{document}
