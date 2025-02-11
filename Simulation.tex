@@ -25,7 +25,7 @@
         \end{figure}
 
         Then the ring is added so that is of the same material and thickness as the backplate and lays
-        on top of the dielectric substrate as shown in (\ref{img:ring}) 
+        on top of the dielectric substrate as shown in (\ref{img:ring}).
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.6\textwidth]{ring.png}
@@ -49,6 +49,7 @@
             disp([sol.x1 sol.x2]);  
         \end{lstlisting}
         
+        Which as can be simplifies to the following equations \ref{eq:xysys}.
         \begin{equation}
             \label{eq:xysys}
             \displaystyle \begin{array}{l} 
@@ -73,7 +74,7 @@
 
         Then the arrow is mirrored against the X, the Y and the XY planes in order to reach all four 
         sides of the cell, then the face is covered with copper and a height of d=0.035mm is also 
-        attributed, which is why it was important to move all other layers below Z=0. 
+        attributed \ref{img:mirrorAndCover}, which is why it was important to move all other layers below Z=0. 
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{mirroredArrows.png}\hfil
@@ -83,7 +84,7 @@
         \end{figure}
 
         The following is a series of cuts in the resonance layer (boolean subtractions)
-        in order to add the resistors between the copper faces.
+        in order to add the resistors between the copper faces near the arrows \ref{img:arrowCuts}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtract.png}\hfil
@@ -92,6 +93,7 @@
             \label{img:arrowCuts}
         \end{figure}
 
+        And have the same width for both near the arrows and for near the ring \ref{img:ringCuts}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtractRing.png}\hfil
@@ -101,12 +103,12 @@
         \end{figure}
 
         Then the resistors are added connecting to the center points of the faces
-        created by the previous subtractions \ref{img:resistors} (it is important to state that performance
-        may be reduced in this implementation as better absorbance may be observed
-        if the connection height is: $d=0.035mm$).
+        created by the previous subtractions \ref{img:resistors} (it is important
+        to state that performance may be reduced in this implementation as better
+        absorbance may be observed if the connection height is: $d=0.035mm$).
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.45\linewidth]{faceCenterPoint.png}
+            \includegraphics[width=0.4\textwidth]{faceCenterPoint.png}
             \caption{Resistor Placement}
             \label{img:resistors}
         \end{figure}
@@ -114,12 +116,14 @@
         Now to perform a simulation using the frequency solver in CST, the boundaries will be periodic
         along the XY plate free space conditions will be added along the Z axis.
         The Mesh that ends up being calculated is as \ref{img:RingAndArrowMesh}.
+
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.45\linewidth]{mesh.png}
+            \includegraphics[width=0.4\textwidth]{mesh.png}
             \caption{Ring Mesh for reference}
             \label{img:RingAndArrowMesh}
-        \end{figure}[h]
+        \end{figure}
+
         In the figure for the Electrical field absorbance the surfaces can be observed for $Z_{max}1$
         as in (\ref{img:E_Zmax1}).
         \begin{figure}[h]
@@ -192,7 +196,34 @@
             \end{minipage}
         \end{center}
        
-        The \epsilon and \mu \dots
+        The \epsilon and \mu are being extracted from the $S_{11}$ and $S_{12}$ parameters.
+        and their imaginary parts are shown respectively \ref{plt:EpsilonMu}.
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}%[trim axis left, trim axis right]
+                \begin{axis}[
+                    title={\textsf{Relative Permittivity \& Permeability}},
+                    xlabel={Frequency (GHz)},
+                    ylabel={$\epsilon_{eff} \& \mu_{eff}$},
+                    legend pos=north east
+                ] 
+                    \addplot table[x=freq, y=Re, col sep=tab] {data/Epsilon.txt};
+                    \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Epsilon.txt};
+    
+                    \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
+                    \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Mu.txt};
+
+                    \addlegendentry{\Re(\epsilon)}
+                    \addlegendentry{\Im(\epsilon)}
+                    \addlegendentry{\Re(\mu)}
+                    \addlegendentry{\Im(\mu)}
+                
+                \end{axis}
+            \end{tikzpicture}
+            \caption{\textsf{Effective $\epsilon \& \mu$}}
+            \label{plt:EpsilonMu}
+        \end{figure}
+        
 
     \subsection{\textsf{Alternative Modeling Methods}}
         In order to simulate the absorber there are also a few other ways to go about it:
@@ -203,4 +234,5 @@
         \end{itemize}
         
         After having completed the simulation it is easy to extract the impedance of the
-        absorber in order to try and implement the transmission line equivalent\dots
+        absorber in order to try and implement the transmission line equivalent.
+        
