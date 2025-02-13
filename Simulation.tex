@@ -1,21 +1,30 @@
-\section{\textsf{Simulation}}
-    The simulation has be created using the CST software in order to implement a
-    configuration such as shown in \cite{zhang_design_2023}.
+\section{\textsf{Simulation}} 
+    The simulation was conducted using CST (Computer Simulation Technology)
+    software to implement a configuration inspired by the design presented 
+    in \cite{zhang_design_2023}. This section outlines the steps taken to 
+    model the structure, the assumptions made, and the results obtained from
+    the simulation.
 
-    \subsection{\textsf{CST Implementation}}
-        The vertical layout implemented in CST consists of a three layer structure:
+    \subsection{\textsf{CST Implementation}} 
+        The vertical layout in CST consists of a three-layer structure:
         \begin{itemize}
-            \item Dielectric substrate
-            \item Air
-            \item Metal Backplate
+        \item \textbf{Dielectric Substrate}:  This layer serves as the 
+            base for the structure.
+        \item \textbf{Air Gap}: Positioned above the dielectric substrate,
+            this layer introduces an air gap to influence the electromagnetic 
+            properties.
+        \item \textbf{Metal Backplate}: The top layer, made of copper, 
+            acts as a reflective surface.
         \end{itemize}
 
-        The dielectric substrate will also embody a metallic component made of the same
-        material as the metal backplate; copper (5.96 \mu $10^7$ S/m).
+        The dielectric substrate also includes a metallic component, which
+        is made of the same material as the metal backplate—copper, with
+        a conductivity of (5.96 \mu $10^7$ S/m).
 
-        At first the FR-4 substrate is placed without the metal resonance layer and then
-        the two other layers - all below Z=0, turning on the orthographic side view the
-        layout is as (\ref{img:layout}).
+        Initially, the FR-4 substrate is placed without the metal 
+        resonance layer. The other two layers are positioned below $Z=0$. 
+        When viewed from the orthographic side, the layout appears as shown
+        in Figure \ref{img:layout}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.4\textwidth]{substrate.png}\hfil
@@ -24,8 +33,9 @@
             \label{img:layout}
         \end{figure}
 
-        Then the ring is added so that is of the same material and thickness as the backplate and lays
-        on top of the dielectric substrate as shown in (\ref{img:ring}).
+        Next, a ring resonator is added on top of the dielectric substrate. 
+        The ring is made of the same material and thickness as the backplate, 
+        as illustrated in Figure \ref{img:ring}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.6\textwidth]{ring.png}
@@ -33,23 +43,22 @@
             \label{img:ring}
         \end{figure}
 
-        The assumption made is that both the arrow body and point are $\alpha=0.5mm$ of width.
-        In order to accurately place all the curve points that define the arrow some basic calculations
-        shall be made. The two points of the arrow base lie exactly on the arc of the ring and are 
-        equidistant from curve y=x so the in order to find their cartesian coordinates the following
-        system shall be solved. 
-
+        An important assumption in this design is that both the body and the 
+        tip of the arrow have a width of $\alpha=0.5 mm$. To accurately place
+        the curve points defining the arrow, a system of equations must be 
+        solved to determine the Cartesian coordinates of the arrow's base points. 
+        These points lie on the arc of the ring and are equidistant from the curve 
+        $y=x$. The following MATLAB code snippet demonstrates the solution to this 
+        system:
         \begin{lstlisting}[frame=single, numbers=left, style=Matlab-Pyglike]
             syms x1 x2
 
-            eq1 = 2*(x1 - x2)^2 == .5^2;
-            eq2 = sqrt(x2^2 + x1^2) == 2.7;
+            eq1 = 2*(x1 - x2)^2 == .5^2; eq2 = sqrt(x2^2 + x1^2) == 2.7;
 
-            sol = solve([eq1, eq2], [x1 x2]);
-            disp([sol.x1 sol.x2]);  
+            sol = solve([eq1, eq2], [x1 x2]); disp([sol.x1 sol.x2]);  
         \end{lstlisting}
         
-        Which as can be simplifies to the following equations \ref{eq:xysys}.
+        This system simplifies to the equations shown in Equation \ref{eq:xysys}.
         \begin{equation}
             \label{eq:xysys}
             \displaystyle \begin{array}{l} 
@@ -72,9 +81,11 @@
             \end{array}
         \end{equation}
 
-        Then the arrow is mirrored against the X, the Y and the XY planes in order to reach all four 
-        sides of the cell, then the face is covered with copper and a height of d=0.035mm is also 
-        attributed \ref{img:mirrorAndCover}, which is why it was important to move all other layers below Z=0. 
+        The arrow is then mirrored across the X, Y, and XY planes to cover all
+        four sides of the cell. The face is covered with copper, and a height of 
+        $d=0.035 mm$ is assigned, as shown in Figure \ref{img:mirrorAndCover}. 
+        This step is crucial because all other layers were initially positioned 
+        below $Z=0$.
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{mirroredArrows.png}\hfil
@@ -83,8 +94,9 @@
             \label{img:mirrorAndCover}
         \end{figure}
 
-        The following is a series of cuts in the resonance layer (boolean subtractions)
-        in order to add the resistors between the copper faces near the arrows \ref{img:arrowCuts}.
+        A series of cuts (boolean subtractions) are made in the resonance layer
+        to add resistors between the copper faces near the arrows, as depicted 
+        in Figure \ref{img:arrowCuts}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtract.png}\hfil
@@ -93,7 +105,8 @@
             \label{img:arrowCuts}
         \end{figure}
 
-        And have the same width for both near the arrows and for near the ring \ref{img:ringCuts}.
+        Similar cuts are made near the ring to ensure uniform width, as shown 
+        in Figure \ref{img:ringCuts}.
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtractRing.png}\hfil
@@ -102,79 +115,78 @@
             \label{img:ringCuts}
         \end{figure}
 
-        Then the resistors are added connecting to the center points of the faces
-        created by the previous subtractions \ref{img:resistors} (it is important
-        to state that performance may be reduced in this implementation as better
-        absorbance may be observed if the connection height is: $d=0.035mm$).
-        \begin{figure}[h]
+        Resistors are then added, connecting to the center points of the faces
+        created by the previous subtractions, as illustrated in Figure 
+        \ref{img:resistors}. It is important to note that the performance of 
+        the absorber may be reduced in this implementation. Better absorbance 
+        might be achieved if the connection height is set to $d=0.035mm$.
+
+        To perform the simulation using the frequency solver in CST, periodic 
+        boundaries are set along the XY plane, and free space conditions are 
+        applied along the Z axis. The resulting mesh is shown in Figure 
+        \ref{img:RingAndArrowMesh}.
+        
+        \begin{figure}
             \centering
-            \includegraphics[width=0.4\textwidth]{faceCenterPoint.png}
-            \caption{Resistor Placement}
-            \label{img:resistors}
+            \begin{subfigure}{0.4\textwidth}
+                \centering
+                \includegraphics[width= \textwidth]{faceCenterPoint.png}
+                \caption{Resistor Placement}
+                \label{img:resistors}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.40\textwidth}
+                \centering
+                \includegraphics[width= \textwidth]{mesh.png}
+                \caption{Ring Mesh for reference}
+                \label{img:RingAndArrowMesh}
+            \end{subfigure}
+            \caption{Mesh around Resistors}
+            \label{fig:combined}
         \end{figure}
 
-        Now to perform a simulation using the frequency solver in CST, the boundaries will be periodic
-        along the XY plate free space conditions will be added along the Z axis.
-        The Mesh that ends up being calculated is as \ref{img:RingAndArrowMesh}.
-
+        The electrical field absorbance is analyzed at different frequencies. 
+        Figure \ref{img:E_Zmax1} shows the electrical field for $Z_{max}(1)$
+        at frequencies of 2.7 GHz, 7.7 GHz, and 12.7 GHz.
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.4\textwidth]{mesh.png}
-            \caption{Ring Mesh for reference}
-            \label{img:RingAndArrowMesh}
-        \end{figure}
-
-        In the figure for the Electrical field absorbance the surfaces can be observed for $Z_{max}1$
-        as in (\ref{img:E_Zmax1}).
-        \begin{figure}[h]
-            \centering
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_027e2MHz.png}
-            }{video/E_Zmax1_027e2MHz.mkv} \hfil
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_077e2MHz.png}
-            }{video/E_Zmax1_077e2MHz.mkv} \hfil
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_127e2MHz.png}
-            }{video/E_Zmax1_127e2MHz.mkv}
-
+            
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_027e2MHz.png}\hfil
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_077e2MHz.png}\hfil
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_127e2MHz.png}
+            
             \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
             \label{img:E_Zmax1}
         \end{figure}
 
-        As well as for the $Z_{max}2$ the Electrical field can be observed as in (\ref{img:E_Zmax2}).
+        Similarly, Figure \ref{img:E_Zmax2} shows the electrical field for $Z_{max}(2)$
+        at the same frequencies.
         \begin{figure}[h]
             \centering
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_027e2MHz.png}
-            }{video/E_Zmax2_027e2MHz.mkv} \hfil
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_077e2MHz.png}
-            }{video/E_Zmax2_077e2MHz.mkv} \hfil
-            \embedvideo{
-                \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_127e2MHz.png}
-            }{video/E_Zmax2_127e2MHz.mkv}
-
+            
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_027e2MHz.png}\hfil
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_077e2MHz.png}\hfil
+            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_127e2MHz.png}
+            
             \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(2)$}
             \label{img:E_Zmax2}
         \end{figure}
 
-        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation as such (\ref{plt:S11_Zmax}).
-        The Absorptivity (against the frequency) is an essential metric and CST calculates 
-        it as shown in (\ref{plt:Absorptivity}).
-        For the evaluation of the absorber Absorptivity can be calculated using the 
+        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation as such
+        (\ref{plt:S11_Zmax}). The Absorptivity (against the frequency) is an
+        essential metric and CST calculates it as shown in (\ref{plt:Absorptivity}).
+        For the evaluation of the absorber Absorptivity can be calculated using the
         formula: $ A = 1 - |S_{11}|^2 - |T|^2 $, where T is the transmission
-        coefficient and can be calculated using the formula: $T = \frac{2Z_0}{Z+Z_0}$.
-        However the $Z$ mentioned needs to be the normalized impedance of the absorber so this is where
-        the calculation will start.
+        coefficient and can be calculated using the formula: $T =
+        \frac{2Z_0}{Z+Z_0}$. However the $Z$ mentioned needs to be the normalized
+        impedance of the absorber so this is where the calculation will start.
 
         \begin{center}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
-                    \begin{axis}[
+                    \begin{axis}[ 
                         title={\textsf{Reflection Coefficient}},
-                        xlabel={Frequency (GHz)},
-                        ylabel={$S_{11}$ (dB)}
+                        xlabel={Frequency (GHz)}, ylabel={$S_{11}$ (dB)} 
                     ] \addplot table[x=freq, y=s11, col sep=space] {data/s11.txt};
                     \end{axis}
                 \end{tikzpicture}
@@ -183,11 +195,10 @@
             \end{minipage}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
-                    \begin{axis}[
+                    \begin{axis}[ 
                         title={\textsf{A/\small\lambda}},
-                        xlabel={Wavelength (\lambda)},
-                        ylabel={Absorptivity},
-                        ymin=0.8, ymax=1
+                        xlabel={Wavelength (\lambda)}, ylabel={Absorptivity},
+                        ymin=0.8, ymax=1 
                     ] \addplot table[x=lambda, y=A, col sep=space] {data/Absorptivity.txt};
                     \end{axis}
                 \end{tikzpicture}
@@ -196,18 +207,18 @@
             \end{minipage}
         \end{center}
        
-        The \epsilon and \mu are being extracted from the $S_{11}$ and $S_{12}$ parameters.
-        and their imaginary parts are shown respectively \ref{plt:EpsilonMu}.
+        The relative permittivity (\epsilon) and permeability (\mu) are extracted 
+        from the $S_{11}$ and $S_{12}$ parameters. Their imaginary parts are shown 
+        in Figure \ref{plt:EpsilonMu}.
         \begin{figure}[h]
             \centering
             \begin{tikzpicture}%[trim axis left, trim axis right]
-                \begin{axis}[
+                \begin{axis}[ 
                     title={\textsf{Relative Permittivity \& Permeability}},
-                    xlabel={Frequency (GHz)},
-                    ylabel={$\epsilon_{eff} \& \mu_{eff}$},
-                    legend pos=north east
-                ] 
-                    \addplot table[x=freq, y=Re, col sep=tab] {data/Epsilon.txt};
+                    xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
+                    legend pos=north east 
+                ]   
+                    \addplot table[x=freq, y=Re, col sep=tab] {data/Epsilon.txt}; 
                     \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Epsilon.txt};
     
                     \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
@@ -225,14 +236,21 @@
         \end{figure}
         
 
-    \subsection{\textsf{Alternative Modeling Methods}}
-        In order to simulate the absorber there are also a few other ways to go about it:
-        \begin{itemize}
-            \item Transmission Line equivalent
-            \item Electrical circuit equivalent
-            \item Mathematical modeling \& code (MATLAB)
-        \end{itemize}
+        \subsection{\textsf{Alternative Modeling Methods}}
+
+            In addition to the CST simulation, there are several alternative methods
+            to model the absorber:
+            \begin{itemize}
+                \item \textbf{Transmission Line Equivalent}: This method models the 
+                    absorber as a transmission line, which can be useful for 
+                    understanding the impedance matching and wave propagation.
+                \item \textbf{Electrical Circuit Equivalent}: The absorber can be 
+                    represented as an equivalent electrical circuit, simplifying the
+                    analysis of its behavior.
+                \item \textbf{Mathematical Modeling \& Code (MATLAB)}: Numerical methods
+                    and coding in MATLAB can be used to simulate the absorber's 
+                    performance, providing flexibility in parameter adjustments.
+            \end{itemize}
         
-        After having completed the simulation it is easy to extract the impedance of the
-        absorber in order to try and implement the transmission line equivalent.
-        
+            After completing the CST simulation, the impedance of the absorber can be 
+            extracted, which is useful for implementing the transmission line equivalent model.
