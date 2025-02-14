@@ -128,16 +128,16 @@
         
         \begin{figure}
             \centering
-            \begin{subfigure}{0.4\textwidth}
+            \begin{subfigure}{0.49\textwidth}
                 \centering
-                \includegraphics[width= \textwidth]{faceCenterPoint.png}
+                \includegraphics[width=\textwidth]{faceCenterPoint.png}
                 \caption{Resistor Placement}
                 \label{img:resistors}
             \end{subfigure}
             \hfill
-            \begin{subfigure}{0.40\textwidth}
+            \begin{subfigure}{0.49\textwidth}
                 \centering
-                \includegraphics[width= \textwidth]{mesh.png}
+                \includegraphics[width=\textwidth]{mesh.png}
                 \caption{Ring Mesh for reference}
                 \label{img:RingAndArrowMesh}
             \end{subfigure}
@@ -253,4 +253,63 @@
             \end{itemize}
         
             After completing the CST simulation, the impedance of the absorber can be 
-            extracted, which is useful for implementing the transmission line equivalent model.
+            extracted, which is useful for implementing the transmission line equivalent 
+            model. For this the $Z_{patch}$ is extracted from CST as the behavior
+            of the absorber is related to the quality of impedance matching of the metal
+            resonance layer which is connected in parallel to the impedances of the FR-4
+            substrate and the air layer respectively. Finally the copper backplate is
+            represented as a sort circuit.
+
+            \begin{center}
+                \usetikzlibrary {arrows.meta}
+                \begin{circuitikz}[scale=1.2] \draw
+                    (0,2) node [ anchor=east ] {A} to [ short, o-o ] (1,2)
+                        to [ transmission line, l=$\epsilon_{r2}\mu_{r2}h_2$, o-o ] (4,2)
+                        to [ transmission line, l=$\epsilon_{r1}\mu_{r1}h_1$, o-o ] (6,2)
+                    
+                    (1,2) to [ european inductor, l=$Z_{patch}$, o-o ] (1,0)
+                    (6,2) to [ short, l=Metal Ground Plane, o-o ] (6,0)
+                    
+                    (0,0) node[ anchor=east ] {B} to[ short, o-o ] (1,0)    
+                        to [ transmission line, l=$Z_{d2}$, o-o ] (4,0)
+                        to [ transmission line, l=$Z_{d1}$, o-o ] (6,0)
+                ;\draw
+                    (3.5,-1) node [ anchor=east ] {$Z_{in}(d1)$} to (3.5,0.5) 
+                        [arrows={->}] to (4.5,0.5)
+                ;\draw
+                    (1.5,-1) node [ anchor=east ] {$Z_{in}(d2)$} to (1.5,0.7)
+                        [arrows={->}] to (2.5,0.7)
+                ;\draw
+                    (-0.5,-1) node [ anchor=east ] {$Z_{in}$} to (-0.5,1)
+                        [arrows={->}] to (0.5,1)
+                ;\end{circuitikz}    
+            \end{center}
+            
+            So the entire absorber can be modeled as a simple impedance matching
+            problem with the basic equations in (\ref{eq:Absorption}). The
+            objective is for the equivalent impedance of the absorber to match
+            the free space.
+            
+            It is also worth noting that the absorber can be modeled as an 
+            equivalent electrical circuit .
+            \begin{center}
+                \usetikzlibrary {arrows.meta}
+                \begin{circuitikz}[scale=1.2] \draw
+                    (0,6) node [ anchor=north ] {-} to [ short ] (1,6)
+                        to [ european resistor ] (2,6)
+                        to [ short ] (4,6)
+                        to [ european resistor ] (6,6)
+                        to [ short ] (6,0)
+                        to [ european resistor ] (4,0)
+                        to [ short ] (2,0)
+                        to [ european resistor ] (1,0)
+                    (0,0) node [ anchor=south ] {+} to [ short ] (1,0)
+                    
+                    (3,6) to [ european resistor ] (3,4)
+                        to [ cute inductor ] (3,2)
+                        to [ capacitor ] (3,0)
+                    (4,6) to [ european resistor ] (4,4)
+                        to [ cute inductor ] (4,2)
+                        to [ capacitor ] (4,0)
+                ;\end{circuitikz}    
+            \end{center}
