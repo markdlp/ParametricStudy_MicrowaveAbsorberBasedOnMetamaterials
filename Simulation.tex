@@ -268,7 +268,7 @@
                         to [ transmission line, l=$\epsilon_{r1}\mu_{r1}h_1$, o-o ] (6,2)
                     
                     (1,2) to [ european inductor, l=$Z_{patch}$, o-o ] (1,0)
-                    (6,2) to [ short, l=Metal Ground Plane, o-o ] (6,0)
+                    (6,2) to [ short, l=\textsf{Metal Ground Plane}, o-o ] (6,0)
                     
                     (0,0) node[ anchor=east ] {B} to[ short, o-o ] (1,0)    
                         to [ transmission line, l=$Z_{d2}$, o-o ] (4,0)
@@ -282,6 +282,11 @@
                 ;\draw
                     (-0.5,-1) node [ anchor=east ] {$Z_{in}$} to (-0.5,1)
                         [arrows={->}] to (0.5,1)
+                ;
+            
+                    \draw [dashed] (0.2,2.5) -- (0.2,-0.5);
+                    \draw [dashed] (1.7,2.5) -- (1.7,-0.5);
+                    \draw [dashed] (4,2.5) -- (4,-0.5)
                 ;\end{circuitikz}    
             \end{center}
             
@@ -295,21 +300,36 @@
             \begin{center}
                 \usetikzlibrary {arrows.meta}
                 \begin{circuitikz}[scale=1.2] \draw
-                    (0,6) node [ anchor=north ] {-} to [ short ] (1,6)
-                        to [ european resistor ] (2,6)
+                    (0,6) node [ anchor=north ] {-} to [ short, *- ] (1,6)
+                        to [ european resistor, l=$Z_0$ ] (2,6)
                         to [ short ] (4,6)
-                        to [ european resistor ] (6,6)
-                        to [ short ] (6,0)
-                        to [ european resistor ] (4,0)
+                        to [ european resistor, l=$Z_d$ ] (9,6)
+                        to [ short, l=\textsf{Metal Ground Plane}, *-* ] (9,0)
+                        to [ european resistor, n=res1 ] (4,0)
                         to [ short ] (2,0)
-                        to [ european resistor ] (1,0)
-                    (0,0) node [ anchor=south ] {+} to [ short ] (1,0)
+                        to [ european resistor, n=res2 ] (1,0)
+                    (0,0) node [ anchor=south ] {+} to [ short, *- ] (1,0)
                     
-                    (3,6) to [ european resistor ] (3,4)
-                        to [ cute inductor ] (3,2)
-                        to [ capacitor ] (3,0)
-                    (4,6) to [ european resistor ] (4,4)
-                        to [ cute inductor ] (4,2)
-                        to [ capacitor ] (4,0)
+                    (res1.s) node[above]{$Z_d$}
+                    (res2.s) node[above]{$Z_0$}
+                    
+                    (3,6) to [ european resistor, l=$R_1$, *- ] (3,4)
+                        to [ cute inductor, l=$L_1$ ] (3,2)
+                        to [ capacitor, l=$C_1$, -* ] (3,0)
+                    (5,6) to [ european resistor, l=$R_2$, *- ] (5,4)
+                        to [ cute inductor, l=$L_2$ ] (5,2)
+                        to [ capacitor, l=$C_2$, -* ] (5,0)
+                    ;\draw
+                        (2.1,-1) node [ anchor=east ] {$Z_{in}$} to (2.1,1)
+                            [arrows={->}] to (2.5,1)
+                    ;
+                    \draw[->]   (0.7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_0(t)$};
+                    \draw[->]   (3.3,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_1(t)$};
+                    \draw[->]   (7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_2(t)$};
+                    
+                    \draw (0,3.3) [arrows={->}] node [ anchor=north ] {$u(t)$} to (0,5.6);
+                    \draw (0,2.7) [arrows={->}] to (0,0.4);
+                
+                    \draw [dashed] (2.3,6.5) -- (2.3,-0.5)    
                 ;\end{circuitikz}    
             \end{center}
