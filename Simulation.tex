@@ -224,10 +224,10 @@
                     \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
                     \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Mu.txt};
 
-                    \addlegendentry{\Re(\epsilon)}
-                    \addlegendentry{\Im(\epsilon)}
-                    \addlegendentry{\Re(\mu)}
-                    \addlegendentry{\Im(\mu)}
+                    \addlegendentry{\Re{(\epsilon)}}
+                    \addlegendentry{\Im{(\epsilon)}}
+                    \addlegendentry{\Re{(\mu)}}
+                    \addlegendentry{\Im{(\mu)}}
                 
                 \end{axis}
             \end{tikzpicture}
@@ -325,9 +325,10 @@
                         {Z_{d2}+jZ_{in}(d_1)\tan{\beta_2h_2}} \label{eq:Zin_d2}
                 \end{align} 
             \end{subequations}
+
             The $Z_{patch}$ is the impedance of the metal resonance layer and is 
             extracted from the S parameters of the simulation. In greater detail 
-            the normalized impedance or the intrinsic impedance $z$ for the entire 
+            the normalized impedance (or the intrinsic impedance) $z$ for the entire 
             absorber is expressed as (\ref{eq:intrinsicImpedance}). And the 
             refractive index can be expressed as (\ref{eq:refractiveIndex}) using
             the $S$ parameters.
@@ -339,6 +340,32 @@
                     n & = \frac{1}{kg}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
                 \end{align}
             \end{subequations}
+            The normalized impedance $z$ is calculated as 
+            (\ref{plt:normalizedImpedance}) and after it is multiplied
+            with the free space impedance it gets denormalized $Z_L = z*Z_0$ so
+            that the $Z_{patch}$ can be extracted from (\ref{eq:Gamma}) and (\ref{eq:lineZ}).
+            
+            \begin{subequations}
+                \label{eq:match}
+                \begin{align}
+                    \Gamma & = \frac{Z_{patch} || Z_{in}(d_2) - Z_0}{Z_{patch} || Z_{in}(d_2) + Z_0} \label{eq:Gamma} \\
+                    Z_L & = \frac{1+\Gamma}{1-\Gamma} \label{eq:lineZ}
+                \end{align}
+            \end{subequations}
+
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}%[trim axis left, trim axis right]
+                    \begin{axis}[ 
+                        title={\textsf{Normalized Impedance}},
+                        xlabel={Frequency (GHz)}, ylabel={$z$},
+                        legend pos=north east 
+                    ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
+                    \end{axis}
+                \end{tikzpicture}
+                \caption{\textsf{\Re{($z$)}}}
+                \label{plt:normalizedImpedance}
+            \end{figure}
             
             It is also worth noting that the absorber can be modeled as an 
             equivalent electrical circuit.
