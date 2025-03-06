@@ -297,7 +297,14 @@
             transmission line equivalent the input impedances of each absorber
             layer shall be calculated. The input impedance of the air layer and
             the metal ground plane is calculated as in (\ref{eq:Zin_d1}) with
-            the phase constant as in (\ref{eq:beta_1}).
+            the phase constant as in (\ref{eq:beta_1}). Then the FR-4 layer
+            is has a relative permittivity (\epsilon) of 4.3 and a relative 
+            permeability (\mu) of one but in the calculations the phase
+            constant (\ref{eq:beta_2}) is derived from the loss tangent 
+            (\ref{eq:lossTangent}) because the medium is way more dense than
+            vacuum and thus the wavelength is less than $\frac{c_0}{f}$. So the 
+            input impedance of the combined FR-4, Air and Metal ground plane is 
+            calculated as in (\ref{eq:Zin_d2}).
 
             \begin{subequations}
                 \label{eq:Zin}
@@ -318,9 +325,23 @@
                         {Z_{d2}+jZ_{in}(d_1)\tan{\beta_2h_2}} \label{eq:Zin_d2}
                 \end{align} 
             \end{subequations}
+            The $Z_{patch}$ is the impedance of the metal resonance layer and is 
+            extracted from the S parameters of the simulation. In greater detail 
+            the normalized impedance or the intrinsic impedance $z$ for the entire 
+            absorber is expressed as (\ref{eq:intrinsicImpedance}). And the 
+            refractive index can be expressed as (\ref{eq:refractiveIndex}) using
+            the $S$ parameters.
+
+            \begin{subequations}
+                \label{eq:Impedance}
+                \begin{align}
+                    z & = \sqrt{\frac{(1 + S_{11})^2 - S_{21}^2}{(1 - S_{11})^2 + S_{21}^2}} \label{eq:intrinsicImpedance} \\
+                    n & = \frac{1}{kg}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
+                \end{align}
+            \end{subequations}
             
             It is also worth noting that the absorber can be modeled as an 
-            equivalent electrical circuit .
+            equivalent electrical circuit.
             \begin{center}
                 \usetikzlibrary {arrows.meta}
                 \begin{circuitikz}[scale=1.2] \draw
