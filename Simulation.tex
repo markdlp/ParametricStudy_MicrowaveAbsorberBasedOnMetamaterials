@@ -293,7 +293,31 @@
             So the entire absorber can be modeled as a simple impedance matching
             problem with the basic equations in (\ref{eq:Absorption}). The
             objective is for the equivalent impedance of the absorber to match
-            the free space.
+            the free space impedance and in order to simulate that with a 
+            transmission line equivalent the input impedances of each absorber
+            layer shall be calculated. The input impedance of the air layer and
+            the metal ground plane is calculated as in (\ref{eq:Zin_d1}) with
+            the phase constant as in (\ref{eq:beta_1}).
+
+            \begin{subequations}
+                \label{eq:Zin}
+                \begin{align}
+                    \beta_1 & = \frac{2\pi\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda} \label{eq:beta_1} \\
+                    Z_{in}(d_1) & = jZ_{d1}\tan{\beta_1h_1} = jZ_0\sqrt{\frac{\mu_{r1}}{\epsilon_{r1}}}
+                            \tan{\frac{2\pi h_1\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda}} \label{eq:Zin_d1} \\
+                    \tan{\delta} & = \frac{\sigma}{\omega\epsilon} = 0.025 << 1
+                        \textrm{ where } \delta = \frac{1}{\alpha} \label{eq:lossTangent} \\
+                    \alpha & = \frac{\sigma}{2}\sqrt{\frac{\mu_2}{\epsilon_2}} \Rightarrow \alpha = 40 \label{eq:alpha} \\
+                    \sigma & = \sqrt{\frac{\epsilon_0\epsilon_{r2}2\alpha}{\mu_0\mu_{r2}}} \label{eq:sigma} \\
+                    \beta_2 & = \omega\sqrt{\frac{\mu_{r2}\mu_0\epsilon_{r2}\epsilon_0}{2}}
+                        \left[
+                            \sqrt{1+\left(\frac{\sigma}{\omega\epsilon_{r2}\epsilon_0}\right)^2}+1
+                        \right]^\frac{1}{2} \textrm{ where } \omega = 2\pi f \label{eq:beta_2} \\
+                    Z_{d2} & = Z_0\sqrt{\frac{\mu_{r2}}{\epsilon_{r2}}} \label{eq:Zd2} \\
+                    Z_{in}(d2) & = Z_{d2}\frac{Z_{in}(d_1)+jZ_{d2}\tan{\beta_2h_2}}
+                        {Z_{d2}+jZ_{in}(d_1)\tan{\beta_2h_2}} \label{eq:Zin_d2}
+                \end{align} 
+            \end{subequations}
             
             It is also worth noting that the absorber can be modeled as an 
             equivalent electrical circuit .
@@ -330,6 +354,8 @@
                     \draw (0,3.3) [arrows={->}] node [ anchor=north ] {$u(t)$} to (0,5.6);
                     \draw (0,2.7) [arrows={->}] to (0,0.4);
                 
-                    \draw [dashed] (2.3,6.5) -- (2.3,-0.5)    
+                    \draw [dashed] (2.3,6.5) -- (2.3,-0.5)
                 ;\end{circuitikz}    
             \end{center}
+
+            Where the \dots
