@@ -50,13 +50,7 @@
         These points lie on the arc of the ring and are equidistant from the curve 
         $y=x$. The following MATLAB code snippet demonstrates the solution to this 
         system:
-        \begin{lstlisting}[frame=single, numbers=left, style=Matlab-Pyglike]
-            syms x1 x2
-
-            eq1 = 2*(x1 - x2)^2 == .5^2; eq2 = sqrt(x2^2 + x1^2) == 2.7;
-
-            sol = solve([eq1, eq2], [x1 x2]); disp([sol.x1 sol.x2]);  
-        \end{lstlisting}
+        \matlabscript{coords}{extraction of arrow base points}
         
         This system simplifies to the equations shown in Equation (\ref{eq:xysys}).
         \begin{equation}
@@ -145,9 +139,12 @@
             \label{fig:combined}
         \end{figure}
 
+    \subsection{\textsf{Evaluation}}
+
         The electrical field absorbance is analyzed at different frequencies. 
         Figure (\ref{img:E_Zmax1}) shows the electrical field for $Z_{max}(1)$
         at frequencies of 2.7 GHz, 7.7 GHz, and 12.7 GHz.
+
         \begin{figure}[h]
             \centering
             
@@ -236,191 +233,191 @@
         \end{figure}
         
 
-        \subsection{\textsf{Alternative Modeling Methods}}
+    \subsection{\textsf{Alternative Modeling Methods}}
 
-            In addition to the CST simulation, there are several alternative methods
-            to model the absorber:
-            \begin{itemize}
-                \item \textbf{Transmission Line Equivalent}: This method models the 
-                    absorber as a transmission line, which can be useful for 
-                    understanding the impedance matching and wave propagation.
-                \item \textbf{Electrical Circuit Equivalent}: The absorber can be 
-                    represented as an equivalent electrical circuit, simplifying the
-                    analysis of its behavior.
-                \item \textbf{Mathematical Modeling \& Code (MATLAB)}: Numerical methods
-                    and coding in MATLAB can be used to simulate the absorber's 
-                    performance, providing flexibility in parameter adjustments.
-            \end{itemize}
-        
-            After completing the CST simulation, the impedance of the absorber can be 
-            extracted, which is useful for implementing the transmission line equivalent 
-            (\ref{sch:TxLine}) model. For this the $Z_{patch}$ is extracted from CST as the 
-            behavior of the absorber is related to the quality of impedance matching of the
-            metal resonance layer which is connected in parallel to the impedances of the 
-            FR-4 substrate and the air layer respectively. Finally the copper backplate is
-            represented as a sort circuit.
+        In addition to the CST simulation, there are several alternative methods
+        to model the absorber:
+        \begin{itemize}
+            \item \textbf{Transmission Line Equivalent}: This method models the 
+                absorber as a transmission line, which can be useful for 
+                understanding the impedance matching and wave propagation.
+            \item \textbf{Electrical Circuit Equivalent}: The absorber can be 
+                represented as an equivalent electrical circuit, simplifying the
+                analysis of its behavior.
+            \item \textbf{Mathematical Modeling \& Code (MATLAB)}: Numerical methods
+                and coding in MATLAB can be used to simulate the absorber's 
+                performance, providing flexibility in parameter adjustments.
+        \end{itemize}
+    
+        After completing the CST simulation, the impedance of the absorber can be 
+        extracted, which is useful for implementing the transmission line equivalent 
+        (\ref{sch:TxLine}) model. For this the $Z_{patch}$ is extracted from CST as the 
+        behavior of the absorber is related to the quality of impedance matching of the
+        metal resonance layer which is connected in parallel to the impedances of the 
+        FR-4 substrate and the air layer respectively. Finally the copper backplate is
+        represented as a sort circuit.
 
-            \begin{figure}[h]
-                \centering
-                \usetikzlibrary {arrows.meta}
-                \begin{circuitikz}[scale=1.2] \draw
-                    (0,2) node [ anchor=east ] {A} to [ short, o-o ] (1,2)
-                        to [ transmission line, l=$\epsilon_{r2}\mu_{r2}h_2$, o-o ] (4,2)
-                        to [ transmission line, l=$\epsilon_{r1}\mu_{r1}h_1$, o-o ] (6,2)
-                    
-                    (1,2) to [ european inductor, l=$Z_{patch}$, o-o ] (1,0)
-                    (6,2) to [ short, o-o ] (6,0)
-                    
-                    (7,1) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {}
-
-                    (0,0) node[ anchor=east ] {B} to[ short, o-o ] (1,0)    
-                        to [ transmission line, l=$Z_{d2}$, o-o ] (4,0)
-                        to [ transmission line, l=$Z_{d1}$, o-o ] (6,0)
-                ;\draw
-                    (3.5,-1) node [ anchor=east ] {$Z_{in}(d1)$} to (3.5,0.5) 
-                        [arrows={->}] to (4.5,0.5)
-                ;\draw
-                    (1.5,-1) node [ anchor=east ] {$Z_{in}(d2)$} to (1.5,0.7)
-                        [arrows={->}] to (2.5,0.7)
-                ;\draw
-                    (-0.5,-1) node [ anchor=east ] {$Z_{in}$} to (-0.5,1)
-                        [arrows={->}] to (0.5,1)
-                ;
-            
-                    \draw [dashed] (0.2,2.5) -- (0.2,-0.5);
-                    \draw [dashed] (1.7,2.5) -- (1.7,-0.5);
-                    \draw [dashed] (4,2.5) -- (4,-0.5)
-                ;\end{circuitikz}
-                \caption{\textsf{Transmission Line Equivalent}}
-                \label{sch:TxLine}
-            \end{figure}
-            
-            So the entire absorber can be modeled as a simple impedance matching
-            problem with the basic equations in (\ref{eq:Absorption}). The
-            objective is for the equivalent impedance of the absorber to match
-            the free space impedance and in order to simulate that with a 
-            transmission line equivalent the input impedances of each absorber
-            layer shall be calculated. The input impedance of the air layer and
-            the metal ground plane is calculated as in (\ref{eq:Zin_d1}) with
-            the phase constant as in (\ref{eq:beta_1}). Then the FR-4 layer
-            is has a relative permittivity (\epsilon) of 4.3 and a relative 
-            permeability (\mu) of one but in the calculations the phase
-            constant (\ref{eq:beta_2}) is derived from the loss tangent 
-            (\ref{eq:lossTangent}) because the medium is way more dense than
-            vacuum and thus the wavelength is less than $\frac{c_0}{f}$. So the 
-            input impedance of the combined FR-4, Air and Metal ground plane is 
-            calculated as in (\ref{eq:Zin_d2}).
-
-            \begin{subequations}
-                \label{eq:Zin}
-                \begin{align}
-                    \beta_1 & = \frac{2\pi\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda} \label{eq:beta_1} \\
-                    Z_{in}(d_1) & = jZ_{d1}\tan{\beta_1h_1} = jZ_0\sqrt{\frac{\mu_{r1}}{\epsilon_{r1}}}
-                            \tan{\frac{2\pi h_1\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda}} \label{eq:Zin_d1} \\
-                    \tan{\delta} & = \frac{\sigma}{\omega\epsilon} = 0.025 << 1
-                        \textrm{ where } \delta = \frac{1}{\alpha} \label{eq:lossTangent} \\
-                    \alpha & = \frac{\sigma}{2}\sqrt{\frac{\mu_2}{\epsilon_2}} \Rightarrow \alpha = 40 \label{eq:alpha} \\
-                    \sigma & = \sqrt{\frac{\epsilon_0\epsilon_{r2}2\alpha}{\mu_0\mu_{r2}}} \label{eq:sigma} \\
-                    \beta_2 & = \omega\sqrt{\frac{\mu_{r2}\mu_0\epsilon_{r2}\epsilon_0}{2}}
-                        \left[
-                            \sqrt{1+\left(\frac{\sigma}{\omega\epsilon_{r2}\epsilon_0}\right)^2}+1
-                        \right]^\frac{1}{2} \textrm{ where } \omega = 2\pi f \label{eq:beta_2} \\
-                    Z_{d2} & = Z_0\sqrt{\frac{\mu_{r2}}{\epsilon_{r2}}} \label{eq:Zd2} \\
-                    Z_{in}(d2) & = Z_{d2}\frac{Z_{in}(d_1)+jZ_{d2}\tan{\beta_2h_2}}
-                        {Z_{d2}+jZ_{in}(d_1)\tan{\beta_2h_2}} \label{eq:Zin_d2}
-                \end{align} 
-            \end{subequations}
-
-            The $Z_{patch}$ is the impedance of the metal resonance layer and is 
-            extracted from the S parameters of the simulation. In greater detail 
-            the normalized impedance (or the intrinsic impedance) $z$ for the entire 
-            absorber is expressed as (\ref{eq:intrinsicImpedance}). And the 
-            refractive index can be expressed as (\ref{eq:refractiveIndex}) using
-            the $S$ parameters.
-
-            \begin{subequations}
-                \label{eq:Impedance}
-                \begin{align}
-                    z & = \sqrt{\frac{(1 + S_{11})^2 - S_{21}^2}{(1 - S_{11})^2 + S_{21}^2}} \label{eq:intrinsicImpedance} \\
-                    n & = \frac{1}{kg}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
-                \end{align}
-            \end{subequations}
-            The normalized impedance $z$ is calculated as 
-            (\ref{plt:normalizedImpedance}) and after it is multiplied
-            with the free space impedance it gets denormalized $Z_L = z*Z_0$ so
-            that the $Z_{patch}$ can be extracted from (\ref{eq:Gamma}) and (\ref{eq:lineZ}).
-            
-            \begin{subequations}
-                \label{eq:match}
-                \begin{align}
-                    \Gamma & = \frac{Z_{patch} || Z_{in}(d_2) - Z_0}{Z_{patch} || Z_{in}(d_2) + Z_0} \label{eq:Gamma} \\
-                    Z_L & = \frac{1+\Gamma}{1-\Gamma} \label{eq:lineZ}
-                \end{align}
-            \end{subequations}
-
-            \begin{figure}[h]
-                \centering
-                \begin{tikzpicture}%[trim axis left, trim axis right]
-                    \begin{axis}[ 
-                        title={\textsf{Normalized Impedance}},
-                        xlabel={Frequency (GHz)}, ylabel={$z$},
-                        legend pos=north east 
-                    ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
-                    \end{axis}
-                \end{tikzpicture}
-                \caption{\textsf{\Re{($z$)}}}
-                \label{plt:normalizedImpedance}
-            \end{figure}
-
-            
-            It is also worth noting that the absorber can be modeled as an 
-            equivalent electrical circuit (\ref{sch:Ecirc}). The difference with 
-            the transmission line equivalent (\ref{sch:TxLine}) is that the absorber
-            is in series between the free space impedance $Z_0$ and is modeled
-            as two impedances of the FR-4 \& Air layers in parallel to the impedance
-            of the metal resonance layer.
-            \begin{figure}[h]
-                \centering
-                \usetikzlibrary {arrows.meta}
-                \begin{circuitikz}[scale=1.2] \draw
-                    (0,6) node [ anchor=north ] {-} to [ short, *- ] (1,6)
-                        to [ european resistor, l=$Z_0$ ] (2,6)
-                        to [ short ] (4,6)
-                        to [ european resistor, l=$Z_d$ ] (9,6)
-                        to [ short, *-* ] (9,0)
-                        to [ european resistor, n=res1 ] (4,0)
-                        to [ short ] (2,0)
-                        to [ european resistor, n=res2 ] (1,0)
-                    (0,0) node [ anchor=south ] {+} to [ short, *- ] (1,0)
-                    
-                    (10,3) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {} 
-
-                    (res1.s) node[above]{$Z_d$}
-                    (res2.s) node[above]{$Z_0$}
-                    
-                    (3,6) to [ european resistor, l=$R_1$, *- ] (3,4)
-                        to [ cute inductor, l=$L_1$ ] (3,2)
-                        to [ capacitor, l=$C_1$, -* ] (3,0)
-                    (5,6) to [ european resistor, l=$R_2$, *- ] (5,4)
-                        to [ cute inductor, l=$L_2$ ] (5,2)
-                        to [ capacitor, l=$C_2$, -* ] (5,0)
-                    ;\draw
-                        (2.1,-1) node [ anchor=east ] {$Z_{in}$} to (2.1,1)
-                            [arrows={->}] to (2.5,1)
-                    ;
-                    \draw[->]   (0.7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_0(t)$};
-                    \draw[->]   (3.3,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_1(t)$};
-                    \draw[->]   (7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_2(t)$};
-                    
-                    \draw (0,3.3) [arrows={->}] node [ anchor=north ] {$u(t)$} to (0,5.6);
-                    \draw (0,2.7) [arrows={->}] to (0,0.4);
+        \begin{figure}[h]
+            \centering
+            \usetikzlibrary {arrows.meta}
+            \begin{circuitikz}[scale=1.2] \draw
+                (0,2) node [ anchor=east ] {A} to [ short, o-o ] (1,2)
+                    to [ transmission line, l=$\epsilon_{r2}\mu_{r2}h_2$, o-o ] (4,2)
+                    to [ transmission line, l=$\epsilon_{r1}\mu_{r1}h_1$, o-o ] (6,2)
                 
-                    \draw [dashed] (2.3,6.5) -- (2.3,-0.5)
-                ;\end{circuitikz}
-                \caption{\textsf{Electrical Circuit Equivalent}}
-                \label{sch:Ecirc}    
-            \end{figure}
+                (1,2) to [ european inductor, l=$Z_{patch}$, o-o ] (1,0)
+                (6,2) to [ short, o-o ] (6,0)
+                
+                (7,1) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {}
 
-            This way the entire impedance characteristics of the absorber are the 
-            same with the transmission line equivalent (\ref{sch:TxLine}) as they 
-            both match the free space. 
+                (0,0) node[ anchor=east ] {B} to[ short, o-o ] (1,0)    
+                    to [ transmission line, l=$Z_{d2}$, o-o ] (4,0)
+                    to [ transmission line, l=$Z_{d1}$, o-o ] (6,0)
+            ;\draw
+                (3.5,-1) node [ anchor=east ] {$Z_{in}(d1)$} to (3.5,0.5) 
+                    [arrows={->}] to (4.5,0.5)
+            ;\draw
+                (1.5,-1) node [ anchor=east ] {$Z_{in}(d2)$} to (1.5,0.7)
+                    [arrows={->}] to (2.5,0.7)
+            ;\draw
+                (-0.5,-1) node [ anchor=east ] {$Z_{in}$} to (-0.5,1)
+                    [arrows={->}] to (0.5,1)
+            ;
+        
+                \draw [dashed] (0.2,2.5) -- (0.2,-0.5);
+                \draw [dashed] (1.7,2.5) -- (1.7,-0.5);
+                \draw [dashed] (4,2.5) -- (4,-0.5)
+            ;\end{circuitikz}
+            \caption{\textsf{Transmission Line Equivalent}}
+            \label{sch:TxLine}
+        \end{figure}
+        
+        So the entire absorber can be modeled as a simple impedance matching
+        problem with the basic equations in (\ref{eq:Absorption}). The
+        objective is for the equivalent impedance of the absorber to match
+        the free space impedance and in order to simulate that with a 
+        transmission line equivalent the input impedances of each absorber
+        layer shall be calculated. The input impedance of the air layer and
+        the metal ground plane is calculated as in (\ref{eq:Zin_d1}) with
+        the phase constant as in (\ref{eq:beta_1}). Then the FR-4 layer
+        is has a relative permittivity (\epsilon) of 4.3 and a relative 
+        permeability (\mu) of one but in the calculations the phase
+        constant (\ref{eq:beta_2}) is derived from the loss tangent 
+        (\ref{eq:lossTangent}) because the medium is way more dense than
+        vacuum and thus the wavelength is less than $\frac{c_0}{f}$. So the 
+        input impedance of the combined FR-4, Air and Metal ground plane is 
+        calculated as in (\ref{eq:Zin_d2}).
+
+        \begin{subequations}
+            \label{eq:Zin}
+            \begin{align}
+                \beta_1 & = \frac{2\pi\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda} \label{eq:beta_1} \\
+                Z_{in}(d_1) & = jZ_{d1}\tan{\beta_1h_1} = jZ_0\sqrt{\frac{\mu_{r1}}{\epsilon_{r1}}}
+                        \tan{\frac{2\pi h_1\sqrt{\mu_{r1}\epsilon_{r1}}}{\lambda}} \label{eq:Zin_d1} \\
+                \tan{\delta} & = \frac{\sigma}{\omega\epsilon} = 0.025 << 1
+                    \textrm{ where } \delta = \frac{1}{\alpha} \label{eq:lossTangent} \\
+                \alpha & = \frac{\sigma}{2}\sqrt{\frac{\mu_2}{\epsilon_2}} \Rightarrow \alpha = 40 \label{eq:alpha} \\
+                \sigma & = \sqrt{\frac{\epsilon_0\epsilon_{r2}2\alpha}{\mu_0\mu_{r2}}} \label{eq:sigma} \\
+                \beta_2 & = \omega\sqrt{\frac{\mu_{r2}\mu_0\epsilon_{r2}\epsilon_0}{2}}
+                    \left[
+                        \sqrt{1+\left(\frac{\sigma}{\omega\epsilon_{r2}\epsilon_0}\right)^2}+1
+                    \right]^\frac{1}{2} \textrm{ where } \omega = 2\pi f \label{eq:beta_2} \\
+                Z_{d2} & = Z_0\sqrt{\frac{\mu_{r2}}{\epsilon_{r2}}} \label{eq:Zd2} \\
+                Z_{in}(d2) & = Z_{d2}\frac{Z_{in}(d_1)+jZ_{d2}\tan{\beta_2h_2}}
+                    {Z_{d2}+jZ_{in}(d_1)\tan{\beta_2h_2}} \label{eq:Zin_d2}
+            \end{align} 
+        \end{subequations}
+
+        The $Z_{patch}$ is the impedance of the metal resonance layer and is 
+        extracted from the S parameters of the simulation. In greater detail 
+        the normalized impedance (or the intrinsic impedance) $z$ for the entire 
+        absorber is expressed as (\ref{eq:intrinsicImpedance}). And the 
+        refractive index can be expressed as (\ref{eq:refractiveIndex}) using
+        the $S$ parameters.
+
+        \begin{subequations}
+            \label{eq:Impedance}
+            \begin{align}
+                z & = \sqrt{\frac{(1 + S_{11})^2 - S_{21}^2}{(1 - S_{11})^2 + S_{21}^2}} \label{eq:intrinsicImpedance} \\
+                n & = \frac{1}{kg}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
+            \end{align}
+        \end{subequations}
+        The normalized impedance $z$ is calculated as 
+        (\ref{plt:normalizedImpedance}) and after it is multiplied
+        with the free space impedance it gets denormalized $Z_L = z*Z_0$ so
+        that the $Z_{patch}$ can be extracted from (\ref{eq:Gamma}) and (\ref{eq:lineZ}).
+        
+        \begin{subequations}
+            \label{eq:match}
+            \begin{align}
+                \Gamma & = \frac{Z_{patch} || Z_{in}(d_2) - Z_0}{Z_{patch} || Z_{in}(d_2) + Z_0} \label{eq:Gamma} \\
+                Z_L & = \frac{1+\Gamma}{1-\Gamma} \label{eq:lineZ}
+            \end{align}
+        \end{subequations}
+
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}%[trim axis left, trim axis right]
+                \begin{axis}[ 
+                    title={\textsf{Normalized Impedance}},
+                    xlabel={Frequency (GHz)}, ylabel={$z$},
+                    legend pos=north east 
+                ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{\textsf{\Re{($z$)}}}
+            \label{plt:normalizedImpedance}
+        \end{figure}
+
+        
+        It is also worth noting that the absorber can be modeled as an 
+        equivalent electrical circuit (\ref{sch:Ecirc}). The difference with 
+        the transmission line equivalent (\ref{sch:TxLine}) is that the absorber
+        is in series between the free space impedance $Z_0$ and is modeled
+        as two impedances of the FR-4 \& Air layers in parallel to the impedance
+        of the metal resonance layer.
+        \begin{figure}[h]
+            \centering
+            \usetikzlibrary {arrows.meta}
+            \begin{circuitikz}[scale=1.2] \draw
+                (0,6) node [ anchor=north ] {-} to [ short, *- ] (1,6)
+                    to [ european resistor, l=$Z_0$ ] (2,6)
+                    to [ short ] (4,6)
+                    to [ european resistor, l=$Z_d$ ] (9,6)
+                    to [ short, *-* ] (9,0)
+                    to [ european resistor, n=res1 ] (4,0)
+                    to [ short ] (2,0)
+                    to [ european resistor, n=res2 ] (1,0)
+                (0,0) node [ anchor=south ] {+} to [ short, *- ] (1,0)
+                
+                (10,3) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {} 
+
+                (res1.s) node[above]{$Z_d$}
+                (res2.s) node[above]{$Z_0$}
+                
+                (3,6) to [ european resistor, l=$R_1$, *- ] (3,4)
+                    to [ cute inductor, l=$L_1$ ] (3,2)
+                    to [ capacitor, l=$C_1$, -* ] (3,0)
+                (5,6) to [ european resistor, l=$R_2$, *- ] (5,4)
+                    to [ cute inductor, l=$L_2$ ] (5,2)
+                    to [ capacitor, l=$C_2$, -* ] (5,0)
+                ;\draw
+                    (2.1,-1) node [ anchor=east ] {$Z_{in}$} to (2.1,1)
+                        [arrows={->}] to (2.5,1)
+                ;
+                \draw[->]   (0.7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_0(t)$};
+                \draw[->]   (3.3,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_1(t)$};
+                \draw[->]   (7,4) arc(110:-110:10mm) node[midway, left, font=\normalsize] {$i_2(t)$};
+                
+                \draw (0,3.3) [arrows={->}] node [ anchor=north ] {$u(t)$} to (0,5.6);
+                \draw (0,2.7) [arrows={->}] to (0,0.4);
+            
+                \draw [dashed] (2.3,6.5) -- (2.3,-0.5)
+            ;\end{circuitikz}
+            \caption{\textsf{Electrical Circuit Equivalent}}
+            \label{sch:Ecirc}    
+        \end{figure}
+
+        This way the entire impedance characteristics of the absorber are the 
+        same with the transmission line equivalent (\ref{sch:TxLine}) as they 
+        both match the free space. 

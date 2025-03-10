@@ -1,9 +1,60 @@
 \section{\textsf{Optimization}}
     In this modeling of the absorber the optimization is already done from the reference
     study \cite{zhang_design_2023}. However it is also possible to optimize the electrical
-    circuit equivalent using the solvers provided in MATLAB. In greater detail, some
-    properties of the absorber can be optimized to better maximize the absorbance,
-    such as the \dots and though not other such as \dots
+    circuit equivalent using the solvers provided in MATLAB. A method for the development
+    of a circuit equivalent can be found in \cite{jha_design_2018} and the relationship
+    between physical dimensions and the material properties, and the electrical circuit
+    components (e.g., the size of the metallic patterns, the thickness and permittivity 
+    of the dielectric layers). In greater detail, to define the optimization problem some
+    properties of the absorber can be optimized to better maximize the absorbance and to
+    do that the objective function is the absorbance itself as in (\ref{eq:Absorbance}) but
+    can also be extracted using the $S$ parameters as in (\ref{eq:AbsorbanceSparams}). Any
+    constraints on the overall size and spacing will emerge from the optimization.
+
+    \begin{equation}
+        \label{eq:AbsorbanceSparams}
+        A(\omega) = 1 - |S_{11}(\omega)|^2 - |S_{21}(\omega)|^2 = 1 - R - T
+    \end{equation}
+
+    To implement the optimization step using MATLAB two solvers can be invoked.
+    \begin{itemize}
+        \item \texttt{fmincon} : For constrained nonlinear optimization
+        \item \texttt{ga} : For genetic algorithm-based optimization, which can be useful 
+            for complex problems with many local optima
+    \end{itemize}
+
+    For this study the \texttt{fmincon} shall be chosen and configured with the appropriate
+    options:
+    \begin{itemize}
+        \item Initial State for the design variables
+        \item Tolerance for convergence
+        \item Maximum number of iterations
+    \end{itemize}
+
+    It is also worth stating that there are parameters that cannot be optimized using the
+    method above. While equivalent circuit and transmission line models are valuable tools, 
+    they simplify the complex electromagnetic behavior of metamaterial absorbers. 
+
+    \begin{itemize}
+        \item \textbf{Fine Geometric Details} : Equivalent circuit models often represent the 
+            metamaterial structure with lumped elements. Fine geometric details of the 
+            structure (e.g., the exact shape of the metallic patterns, small variations in
+            dimensions) that can significantly affect the absorber's performance are not 
+            easily captured by these models.
+        \item \textbf{Complex Electromagnetic Interactions} : Metamaterials exhibit complex
+            electromagnetic interactions, such as near-field coupling between adjacent 
+            elements and high-order resonances. These effects may not be fully accounted for 
+            in simplified circuit models.
+        \item \textbf{Angle of Incidence Effects} : The angle at which the electromagnetic 
+            wave hits the absorber can significantly affect its performance. Circuit models
+            typically do not incorporate these angle-dependent effects accurately.
+        \item \textbf{Polarization Effects} : While some circuit models can be adapted to 
+            consider polarization, accurately capturing complex polarization behavior, 
+            especially in anisotropic structures, can be challenging.
+        \item \textbf{Material Dispersion} : The frequency dependence of the material 
+            properties (permittivity and permeability) can be difficult to model precisely 
+            with lumped circuit elements, especially over broad frequency ranges.
+    \end{itemize}
 
 \section{\textsf{Discussion}}
     \par This study has demonstrated the potential of metamaterial-based microwave absorbers
