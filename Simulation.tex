@@ -24,7 +24,7 @@
         Initially, the FR-4 substrate is placed without the metal 
         resonance layer. The other two layers are positioned below $Z=0$. 
         When viewed from the orthographic side, the layout appears as shown
-        in Figure \ref{img:layout}.
+        in Figure (\ref{img:layout}).
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.4\textwidth]{substrate.png}\hfil
@@ -35,7 +35,7 @@
 
         Next, a ring resonator is added on top of the dielectric substrate. 
         The ring is made of the same material and thickness as the backplate, 
-        as illustrated in Figure \ref{img:ring}.
+        as illustrated in Figure (\ref{img:ring}).
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.6\textwidth]{ring.png}
@@ -58,7 +58,7 @@
             sol = solve([eq1, eq2], [x1 x2]); disp([sol.x1 sol.x2]);  
         \end{lstlisting}
         
-        This system simplifies to the equations shown in Equation \ref{eq:xysys}.
+        This system simplifies to the equations shown in Equation (\ref{eq:xysys}).
         \begin{equation}
             \label{eq:xysys}
             \displaystyle \begin{array}{l} 
@@ -83,7 +83,7 @@
 
         The arrow is then mirrored across the X, Y, and XY planes to cover all
         four sides of the cell. The face is covered with copper, and a height of 
-        $d=0.035 mm$ is assigned, as shown in Figure \ref{img:mirrorAndCover}. 
+        $d=0.035 mm$ is assigned, as shown in Figure (\ref{img:mirrorAndCover}).
         This step is crucial because all other layers were initially positioned 
         below $Z=0$.
         \begin{figure}[h]
@@ -96,7 +96,7 @@
 
         A series of cuts (boolean subtractions) are made in the resonance layer
         to add resistors between the copper faces near the arrows, as depicted 
-        in Figure \ref{img:arrowCuts}.
+        in Figure (\ref{img:arrowCuts}).
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtract.png}\hfil
@@ -106,7 +106,7 @@
         \end{figure}
 
         Similar cuts are made near the ring to ensure uniform width, as shown 
-        in Figure \ref{img:ringCuts}.
+        in Figure (\ref{img:ringCuts}).
         \begin{figure}[h]
             \centering
             \includegraphics[width=.4\textwidth]{subtractRing.png}\hfil
@@ -117,14 +117,14 @@
 
         Resistors are then added, connecting to the center points of the faces
         created by the previous subtractions, as illustrated in Figure 
-        \ref{img:resistors}. It is important to note that the performance of 
+        (\ref{img:resistors}). It is important to note that the performance of 
         the absorber may be reduced in this implementation. Better absorbance 
         might be achieved if the connection height is set to $d=0.035mm$.
 
         To perform the simulation using the frequency solver in CST, periodic 
         boundaries are set along the XY plane, and free space conditions are 
         applied along the Z axis. The resulting mesh is shown in Figure 
-        \ref{img:RingAndArrowMesh}.
+        (\ref{img:RingAndArrowMesh}).
         
         \begin{figure}
             \centering
@@ -146,7 +146,7 @@
         \end{figure}
 
         The electrical field absorbance is analyzed at different frequencies. 
-        Figure \ref{img:E_Zmax1} shows the electrical field for $Z_{max}(1)$
+        Figure (\ref{img:E_Zmax1}) shows the electrical field for $Z_{max}(1)$
         at frequencies of 2.7 GHz, 7.7 GHz, and 12.7 GHz.
         \begin{figure}[h]
             \centering
@@ -159,7 +159,7 @@
             \label{img:E_Zmax1}
         \end{figure}
 
-        Similarly, Figure \ref{img:E_Zmax2} shows the electrical field for $Z_{max}(2)$
+        Similarly, Figure (\ref{img:E_Zmax2}) shows the electrical field for $Z_{max}(2)$
         at the same frequencies.
         \begin{figure}[h]
             \centering
@@ -209,7 +209,7 @@
        
         The relative permittivity (\epsilon) and permeability (\mu) are extracted 
         from the $S_{11}$ and $S_{12}$ parameters. Their imaginary parts are shown 
-        in Figure \ref{plt:EpsilonMu}.
+        in Figure (\ref{plt:EpsilonMu}).
         \begin{figure}[h]
             \centering
             \begin{tikzpicture}%[trim axis left, trim axis right]
@@ -254,13 +254,14 @@
         
             After completing the CST simulation, the impedance of the absorber can be 
             extracted, which is useful for implementing the transmission line equivalent 
-            model. For this the $Z_{patch}$ is extracted from CST as the behavior
-            of the absorber is related to the quality of impedance matching of the metal
-            resonance layer which is connected in parallel to the impedances of the FR-4
-            substrate and the air layer respectively. Finally the copper backplate is
+            (\ref{sch:TxLine}) model. For this the $Z_{patch}$ is extracted from CST as the 
+            behavior of the absorber is related to the quality of impedance matching of the
+            metal resonance layer which is connected in parallel to the impedances of the 
+            FR-4 substrate and the air layer respectively. Finally the copper backplate is
             represented as a sort circuit.
 
-            \begin{center}
+            \begin{figure}[h]
+                \centering
                 \usetikzlibrary {arrows.meta}
                 \begin{circuitikz}[scale=1.2] \draw
                     (0,2) node [ anchor=east ] {A} to [ short, o-o ] (1,2)
@@ -268,8 +269,10 @@
                         to [ transmission line, l=$\epsilon_{r1}\mu_{r1}h_1$, o-o ] (6,2)
                     
                     (1,2) to [ european inductor, l=$Z_{patch}$, o-o ] (1,0)
-                    (6,2) to [ short, l=\textsf{Metal Ground Plane}, o-o ] (6,0)
+                    (6,2) to [ short, o-o ] (6,0)
                     
+                    (7,1) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {}
+
                     (0,0) node[ anchor=east ] {B} to[ short, o-o ] (1,0)    
                         to [ transmission line, l=$Z_{d2}$, o-o ] (4,0)
                         to [ transmission line, l=$Z_{d1}$, o-o ] (6,0)
@@ -287,8 +290,10 @@
                     \draw [dashed] (0.2,2.5) -- (0.2,-0.5);
                     \draw [dashed] (1.7,2.5) -- (1.7,-0.5);
                     \draw [dashed] (4,2.5) -- (4,-0.5)
-                ;\end{circuitikz}    
-            \end{center}
+                ;\end{circuitikz}
+                \caption{\textsf{Transmission Line Equivalent}}
+                \label{sch:TxLine}
+            \end{figure}
             
             So the entire absorber can be modeled as a simple impedance matching
             problem with the basic equations in (\ref{eq:Absorption}). The
@@ -366,22 +371,30 @@
                 \caption{\textsf{\Re{($z$)}}}
                 \label{plt:normalizedImpedance}
             \end{figure}
+
             
             It is also worth noting that the absorber can be modeled as an 
-            equivalent electrical circuit.
-            \begin{center}
+            equivalent electrical circuit (\ref{sch:Ecirc}). The difference with 
+            the transmission line equivalent (\ref{sch:TxLine}) is that the absorber
+            is in series between the free space impedance $Z_0$ and is modeled
+            as two impedances of the FR-4 \& Air layers in parallel to the impedance
+            of the metal resonance layer.
+            \begin{figure}[h]
+                \centering
                 \usetikzlibrary {arrows.meta}
                 \begin{circuitikz}[scale=1.2] \draw
                     (0,6) node [ anchor=north ] {-} to [ short, *- ] (1,6)
                         to [ european resistor, l=$Z_0$ ] (2,6)
                         to [ short ] (4,6)
                         to [ european resistor, l=$Z_d$ ] (9,6)
-                        to [ short, l=\textsf{Metal Ground Plane}, *-* ] (9,0)
+                        to [ short, *-* ] (9,0)
                         to [ european resistor, n=res1 ] (4,0)
                         to [ short ] (2,0)
                         to [ european resistor, n=res2 ] (1,0)
                     (0,0) node [ anchor=south ] {+} to [ short, *- ] (1,0)
                     
+                    (10,3) node[label={[align=center]center:Metal\\Ground\\Plane}] (GND) {} 
+
                     (res1.s) node[above]{$Z_d$}
                     (res2.s) node[above]{$Z_0$}
                     
@@ -403,7 +416,11 @@
                     \draw (0,2.7) [arrows={->}] to (0,0.4);
                 
                     \draw [dashed] (2.3,6.5) -- (2.3,-0.5)
-                ;\end{circuitikz}    
-            \end{center}
+                ;\end{circuitikz}
+                \caption{\textsf{Electrical Circuit Equivalent}}
+                \label{sch:Ecirc}    
+            \end{figure}
 
-            Where the \dots
+            This way the entire impedance characteristics of the absorber are the 
+            same with the transmission line equivalent (\ref{sch:TxLine}) as they 
+            both match the free space. 
