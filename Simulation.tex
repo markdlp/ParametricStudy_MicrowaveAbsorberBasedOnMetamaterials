@@ -193,7 +193,7 @@
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
-                        title={\textsf{A/\small\lambda}},
+                        title={$\frac{A}{\lambda}$},
                         xlabel={Wavelength (\lambda)}, ylabel={Absorptivity},
                         ymin=0.8, ymax=1 
                     ] \addplot table[x=lambda, y=A, col sep=space] {data/Absorptivity.txt};
@@ -207,30 +207,43 @@
         The relative permittivity (\epsilon) and permeability (\mu) are extracted 
         from the $S_{11}$ and $S_{12}$ parameters. Their imaginary parts are shown 
         in Figure (\ref{plt:EpsilonMu}).
-        \begin{figure}[h]
-            \centering
-            \begin{tikzpicture}%[trim axis left, trim axis right]
-                \begin{axis}[ 
-                    title={\textsf{Relative Permittivity \& Permeability}},
-                    xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
-                    legend pos=north east 
-                ]   
-                    \addplot table[x=freq, y=Re, col sep=tab] {data/Epsilon.txt}; 
-                    \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Epsilon.txt};
+        \begin{center}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{A/f}},
+                        xlabel={Frequency}, ylabel={Absorptivity},
+                        ymin=0.8, ymax=1 
+                    ] \addplot table[x=freq, y=A, col sep=space] {data/Absorptivity_freq.txt};
+                    \end{axis}
+                \end{tikzpicture}
+                %\captionof{figure}{\textsf{The $S_{11}$}}
+                \label{plt:AbsorptivityFreq}
+            \end{minipage}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{Relative Permittivity \& Permeability}},
+                        xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
+                        legend pos=north east 
+                    ]   
+                        \addplot table[x=freq, y=Re, col sep=tab] {data/Epsilon.txt}; 
+                        \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Epsilon.txt};
+        
+                        \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
+                        \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Mu.txt};
     
-                    \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
-                    \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Mu.txt};
-
-                    \addlegendentry{\Re{(\epsilon)}}
-                    \addlegendentry{\Im{(\epsilon)}}
-                    \addlegendentry{\Re{(\mu)}}
-                    \addlegendentry{\Im{(\mu)}}
-                
-                \end{axis}
-            \end{tikzpicture}
-            \caption{\textsf{Effective $\epsilon \& \mu$}}
-            \label{plt:EpsilonMu}
-        \end{figure}
+                        \addlegendentry{\Re{(\epsilon)}}
+                        \addlegendentry{\Im{(\epsilon)}}
+                        \addlegendentry{\Re{(\mu)}}
+                        \addlegendentry{\Im{(\mu)}}
+                    
+                    \end{axis}
+                \end{tikzpicture}
+                % \caption{\textsf{Effective $\epsilon \& \mu$}}
+                \label{plt:EpsilonMu}
+            \end{minipage}
+        \end{center}
         
 
     \subsection{\textsf{Alternative Modeling Methods}}
@@ -339,7 +352,7 @@
             \label{eq:Impedance}
             \begin{align}
                 z & = \sqrt{\frac{(1 + S_{11})^2 - S_{21}^2}{(1 - S_{11})^2 + S_{21}^2}} \label{eq:intrinsicImpedance} \\
-                n & = \frac{1}{kg}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
+                n & = \frac{1}{kd}\arccos{\left[\frac{1}{2S_{21}}(1-S_{11}^2+S_{21}^2)\right]} \label{eq:refractiveIndex}
             \end{align}
         \end{subequations}
         The normalized impedance $z$ is calculated as 
@@ -355,19 +368,76 @@
             \end{align}
         \end{subequations}
 
-        \begin{figure}[h]
-            \centering
-            \begin{tikzpicture}%[trim axis left, trim axis right]
-                \begin{axis}[ 
-                    title={\textsf{Normalized Impedance}},
-                    xlabel={Frequency (GHz)}, ylabel={$z$},
-                    legend pos=north east 
-                ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
-                \end{axis}
-            \end{tikzpicture}
-            \caption{\textsf{\Re{($z$)}}}
-            \label{plt:normalizedImpedance}
-        \end{figure}
+        \begin{center}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{Normalized Impedance}},
+                        xlabel={Frequency (GHz)}, ylabel={$z$},
+                        legend pos=north east 
+                    ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
+                    \end{axis}
+                \end{tikzpicture}
+                % \caption{\textsf{\Re{($z$)}}}
+                \label{plt:normalizedImpedance}
+            \end{minipage}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{Effective Permittivity \& Permeability}},
+                        xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
+                        legend pos=north east 
+                    ]   
+                        \addplot table[x=freq, y=epsilon_eff, col sep=tab] {data/epsilon_eff.txt};
+                        \addplot table[x=freq, y=mu_eff, col sep=tab] {data/mu_eff.txt};
+    
+                        \addlegendentry{\Im{(\epsilon)}}
+                        \addlegendentry{\Im{(\mu)}}
+                    
+                    \end{axis}
+                \end{tikzpicture}
+                % \caption{\textsf{Effective $\epsilon \& \mu$}}
+                \label{plt:EpsilonMuEff}
+            \end{minipage}
+        \end{center}
+
+        The exponential term is.
+        \begin{center}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{Exponential Term}},
+                        xlabel={Frequency (GHz)}, ylabel={$\exp{-j\kappa z}$},
+                        legend pos=north east 
+                    ] 
+                        \addplot table[x=freq, y=ExpTerm_Re, col sep=tab] {data/exp_term.txt};
+                        \addplot table[x=freq, y=ExpTerm_Im, col sep=tab] {data/exp_term.txt};
+    
+                        \addlegendentry{\Re{($\exp{-j\kappa z}$)}}
+                        \addlegendentry{\Im{($\exp{-j\kappa z}$)}}
+                    \end{axis}
+                \end{tikzpicture}
+                % \caption{\textsf{\Re{($z$)}}}
+                \label{plt:exp}
+            \end{minipage}
+            \begin{minipage}{.45\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[ 
+                        title={\textsf{Intrinsic Impedance}},
+                        xlabel={Frequency (GHz)}, ylabel={$z$},
+                        legend pos=north east 
+                    ] 
+                        \addplot table[x=freq, y=z_Re, col sep=tab] {data/intrinsic_z.txt};
+                        \addplot table[x=freq, y=z_Im, col sep=tab] {data/intrinsic_z.txt};
+    
+                        \addlegendentry{\Re{($z$)}}
+                        \addlegendentry{\Im{($z$)}}
+                    \end{axis}
+                \end{tikzpicture}
+                % \caption{\textsf{Normalized Impedance CST}}
+                \label{plt:normalizedImpedanceCST}
+            \end{minipage}
+        \end{center}
 
         
         It is also worth noting that the absorber can be modeled as an 

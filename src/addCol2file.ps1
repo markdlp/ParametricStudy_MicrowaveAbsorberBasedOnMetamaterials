@@ -1,6 +1,6 @@
 # Define the paths to the files
 $s11FilePath = "data\s11.txt"
-$zFilePath = "data\z.txt"
+$zFilePath = "data\mu_eff.txt"
 
 # Read the first column from s11.txt
 $firstColumn = Get-Content $s11FilePath | ForEach-Object {
@@ -23,5 +23,3 @@ $combinedContent = for ($i = 0; $i -lt $zContent.Length; $i++) {
 
 # Write the combined content back to z.txt
 Set-Content -Path $zFilePath -Value $combinedContent
-
-Write-Output "First column from s11.txt has been merged into z.txt."
