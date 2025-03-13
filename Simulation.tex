@@ -183,8 +183,15 @@
                 \begin{tikzpicture}
                     \begin{axis}[ 
                         title={\textsf{Reflection Coefficient}},
-                        xlabel={Frequency (GHz)}, ylabel={$S_{11}$ (dB)} 
-                    ] \addplot table[x=freq, y=s11, col sep=space] {data/s11.txt};
+                        xlabel={Frequency (GHz)}, ylabel={$S_{11}$},
+                        legend pos=south east
+                    ] 
+                        \addplot table[x=freq, y=s11_Re, col sep=space] {data/s11_linear_complex.txt};
+                        \addplot table[x=freq, y=s11_Im, col sep=space] {data/s11_linear_complex.txt};
+
+                        \addlegendentry{\Re{($S_{11}$)}}
+                        \addlegendentry{\Im{($S_{11}$)}}
+
                     \end{axis}
                 \end{tikzpicture}
                 %\captionof{figure}{\textsf{The $S_{11}$}}
@@ -193,14 +200,20 @@
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
-                        title={$\frac{A}{\lambda}$},
-                        xlabel={Wavelength (\lambda)}, ylabel={Absorptivity},
-                        ymin=0.8, ymax=1 
-                    ] \addplot table[x=lambda, y=A, col sep=space] {data/Absorptivity.txt};
+                        title={\textsf{Port Coupling}},
+                        xlabel={Frequency (GHz)}, ylabel={$S_{21}$},
+                        legend pos=north west
+                    ] 
+                        \addplot table[x=freq, y=s21_Re, col sep=tab] {data/s21_linear_complex.txt};
+                        \addplot table[x=freq, y=s21_Im, col sep=tab] {data/s21_linear_complex.txt};
+
+                        \addlegendentry{\Re{($S_{21}$)}}
+                        \addlegendentry{\Im{($S_{21}$)}}
+
                     \end{axis}
                 \end{tikzpicture}
                 %\captionof{figure}{\textsf{Absorptivity against Wavelength}}
-                \label{plt:Absorptivity}
+                \label{plt:S21}
             \end{minipage}
         \end{center}
        
@@ -218,7 +231,7 @@
                     \end{axis}
                 \end{tikzpicture}
                 %\captionof{figure}{\textsf{The $S_{11}$}}
-                \label{plt:AbsorptivityFreq}
+                \label{plt:Absorptivity}
             \end{minipage}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
@@ -356,7 +369,7 @@
             \end{align}
         \end{subequations}
         The normalized impedance $z$ is calculated as 
-        (\ref{plt:normalizedImpedance}) and after it is multiplied
+        (\ref{plt:normalizedImpedanceCST}) and after it is multiplied
         with the free space impedance it gets denormalized $Z_L = z*Z_0$ so
         that the $Z_{patch}$ can be extracted from (\ref{eq:Gamma}) and (\ref{eq:lineZ}).
         
@@ -368,64 +381,31 @@
             \end{align}
         \end{subequations}
 
+       
         \begin{center}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
-                        title={\textsf{Normalized Impedance}},
-                        xlabel={Frequency (GHz)}, ylabel={$z$},
-                        legend pos=north east 
-                    ] \addplot table[x=freq, y=z, col sep=tab] {data/z.txt};
-                    \end{axis}
-                \end{tikzpicture}
-                % \caption{\textsf{\Re{($z$)}}}
-                \label{plt:normalizedImpedance}
-            \end{minipage}
-            \begin{minipage}{.45\textwidth}
-                \begin{tikzpicture}
-                    \begin{axis}[ 
-                        title={\textsf{Effective Permittivity \& Permeability}},
-                        xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
-                        legend pos=north east 
-                    ]   
-                        \addplot table[x=freq, y=epsilon_eff, col sep=tab] {data/epsilon_eff.txt};
-                        \addplot table[x=freq, y=mu_eff, col sep=tab] {data/mu_eff.txt};
-    
-                        \addlegendentry{\Im{(\epsilon)}}
-                        \addlegendentry{\Im{(\mu)}}
-                    
-                    \end{axis}
-                \end{tikzpicture}
-                % \caption{\textsf{Effective $\epsilon \& \mu$}}
-                \label{plt:EpsilonMuEff}
-            \end{minipage}
-        \end{center}
-
-        The exponential term is.
-        \begin{center}
-            \begin{minipage}{.45\textwidth}
-                \begin{tikzpicture}
-                    \begin{axis}[ 
-                        title={\textsf{Exponential Term}},
-                        xlabel={Frequency (GHz)}, ylabel={$\exp{-j\kappa z}$},
+                        title={\textsf{Refractive Index}},
+                        xlabel={Frequency (GHz)}, ylabel={$n$},
                         legend pos=north east 
                     ] 
-                        \addplot table[x=freq, y=ExpTerm_Re, col sep=tab] {data/exp_term.txt};
-                        \addplot table[x=freq, y=ExpTerm_Im, col sep=tab] {data/exp_term.txt};
+                        \addplot table[x=freq, y=n_Re, col sep=tab] {data/refractiveIndex.txt};
+                        \addplot table[x=freq, y=n_Im, col sep=tab] {data/refractiveIndex.txt};
     
-                        \addlegendentry{\Re{($\exp{-j\kappa z}$)}}
-                        \addlegendentry{\Im{($\exp{-j\kappa z}$)}}
+                        \addlegendentry{\Re{($n$)}}
+                        \addlegendentry{\Im{($n$)}}
                     \end{axis}
                 \end{tikzpicture}
-                % \caption{\textsf{\Re{($z$)}}}
-                \label{plt:exp}
+                % \caption{\textsf{refractiveIndex}}
+                \label{plt:refractiveIndex}
             \end{minipage}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
                         title={\textsf{Intrinsic Impedance}},
                         xlabel={Frequency (GHz)}, ylabel={$z$},
-                        legend pos=north east 
+                        legend pos=south east 
                     ] 
                         \addplot table[x=freq, y=z_Re, col sep=tab] {data/intrinsic_z.txt};
                         \addplot table[x=freq, y=z_Im, col sep=tab] {data/intrinsic_z.txt};
@@ -438,6 +418,27 @@
                 \label{plt:normalizedImpedanceCST}
             \end{minipage}
         \end{center}
+
+        The exponential term is.
+
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[ 
+                    title={\textsf{Exponential Term}},
+                    xlabel={Frequency (GHz)}, ylabel={$e^{-j\kappa z}$},
+                    legend pos=north west
+                ] 
+                    \addplot table[x=freq, y=ExpTerm_Re, col sep=tab] {data/exp_term.txt};
+                    \addplot table[x=freq, y=ExpTerm_Im, col sep=tab] {data/exp_term.txt};
+
+                    \addlegendentry{\Re{($e^{-j\kappa z}$)}}
+                    \addlegendentry{\Im{($e^{-j\kappa z}$)}}
+                \end{axis}
+            \end{tikzpicture}
+            \caption{\textsf{exponential}}
+            \label{plt:exp}
+        \end{figure}
 
         
         It is also worth noting that the absorber can be modeled as an 
