@@ -120,16 +120,16 @@
         applied along the Z axis. The resulting mesh is shown in Figure 
         (\ref{img:RingAndArrowMesh}).
         
-        \begin{figure}
+        \begin{figure}[h]
             \centering
-            \begin{subfigure}{0.49\textwidth}
+            \begin{subfigure}{0.39\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{faceCenterPoint.png}
                 \caption{Resistor Placement}
                 \label{img:resistors}
             \end{subfigure}
             \hfill
-            \begin{subfigure}{0.49\textwidth}
+            \begin{subfigure}{0.39\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{mesh.png}
                 \caption{Ring Mesh for reference}
@@ -214,7 +214,9 @@
         \end{center}
        
         The effective permittivity (\epsilon) and permeability (\mu) can be extracted 
-        from the $S$ parameters but here are presented as extracted from the simulation.
+        from the $S$ parameters but here are presented as extracted from the simulation
+        in \ref{plt:EpsilonMu}.
+
         \begin{center}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
@@ -350,7 +352,7 @@
         \end{subequations}
 
         The $Z_{patch}$ is the impedance of the metal resonance layer and is 
-        extracted from the S parameters of the simulation. In greater detail 
+        extracted from the $S$ parameters of the simulation. In greater detail 
         the normalized impedance (or the intrinsic impedance) $z$ for the entire 
         absorber is expressed as (\ref{eq:intrinsicImpedance}). And the 
         refractive index can be expressed as (\ref{eq:refractiveIndex}) using
@@ -418,7 +420,7 @@
 
         The exponential term that represents the phase of the wave across
         the entire frequency range. The wave number $\beta$ is the same
-        as $\kappa$ in \ref{eq:intrinsicImpedance}.
+        as $\kappa$ in \ref{eq:refractiveIndex}.
 
         \begin{figure}[h]
             \centering
