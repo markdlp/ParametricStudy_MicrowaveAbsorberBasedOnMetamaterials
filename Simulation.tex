@@ -142,41 +142,37 @@
     \subsection{\textsf{Evaluation}}
 
         The electrical field absorbance is analyzed at different frequencies. 
-        Figure (\ref{img:E_Zmax1}) shows the electrical field for $Z_{max}(1)$
-        at frequencies of 2.7 GHz, 7.7 GHz, and 12.7 GHz.
+        The first line of figure (\ref{img:E}) shows the electrical field for 
+        $Z_{max}(1)$ at frequencies of 2.7 GHz, 7.7 GHz, and 12.7 GHz. Similarly
+        the second line of figure (\ref{img:E}) shows the electrical field for 
+        $Z_{max}(2)$.
 
         \begin{figure}[h]
             \centering
-            
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_027e2MHz.png}\hfil
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_077e2MHz.png}\hfil
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax1_127e2MHz.png}
-            
-            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(1)$}
-            \label{img:E_Zmax1}
+            \begin{tabular}{ccc}
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_027e2MHz.png}&
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_077e2MHz.png}&
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_127e2MHz.png}\\
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_027e2MHz.png}&
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_077e2MHz.png}&
+                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_127e2MHz.png}\\
+            \end{tabular}
+            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}$}
+            \label{img:E}
         \end{figure}
 
-        Similarly, Figure (\ref{img:E_Zmax2}) shows the electrical field for $Z_{max}(2)$
-        at the same frequencies.
-        \begin{figure}[h]
-            \centering
-            
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_027e2MHz.png}\hfil
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_077e2MHz.png}\hfil
-            \includegraphics[page=1, width=0.22\textwidth]{E_Zmax2_127e2MHz.png}
-            
-            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}(2)$}
-            \label{img:E_Zmax2}
-        \end{figure}
 
-        Taking a look in the $S_{11}$ of $Z_{max}$ after the simulation as such
-        (\ref{plt:S11_Zmax}). The Absorptivity (against the frequency) is an
-        essential metric and CST calculates it as shown in (\ref{plt:Absorptivity}).
+        Taking a look in the $S_{11}$ of $Z_{max}$ that represents the reflection
+        coefficient as well as the $S_{21}$ that represents the port coupling, after the
+        simulation as such (\ref{plt:S11_Zmax}). The Absorptivity (against the frequency)
+        is an essential metric and CST calculates it as shown in (\ref{plt:Absorptivity}).
         For the evaluation of the absorber Absorptivity can be calculated using the
-        formula: $ A = 1 - |S_{11}|^2 - |T|^2 $, where T is the transmission
-        coefficient and can be calculated using the formula: $T =
-        \frac{2Z_0}{Z+Z_0}$. However the $Z$ mentioned needs to be the normalized
-        impedance of the absorber so this is where the calculation will start.
+        Fresnel equation: $ A = 1 - R - T $, where T is the transmission coefficient 
+        (\ref{plt:S21}) and can be calculated using the Fresnel equation: $T = \frac{2Z_0}
+        {Z+Z_0}$ and R is the reflection coefficient ($\Gamma$) and can be calculated 
+        from the formula: $R = \frac{Z - Z_0}{Z + Z_0}$. However the $Z$ mentioned needs
+        to be the normalized impedance of the absorber so this is where the calculation 
+        will start.
 
         \begin{center}
             \begin{minipage}{.45\textwidth}
@@ -189,8 +185,8 @@
                         \addplot table[x=freq, y=s11_Re, col sep=space] {data/s11_linear_complex.txt};
                         \addplot table[x=freq, y=s11_Im, col sep=space] {data/s11_linear_complex.txt};
 
-                        \addlegendentry{\Re{($S_{11}$)}}
-                        \addlegendentry{\Im{($S_{11}$)}}
+                        \addlegendentry{$\Re{(S_{11})}$}
+                        \addlegendentry{$\Im{(S_{11})}$}
 
                     \end{axis}
                 \end{tikzpicture}
@@ -207,8 +203,8 @@
                         \addplot table[x=freq, y=s21_Re, col sep=tab] {data/s21_linear_complex.txt};
                         \addplot table[x=freq, y=s21_Im, col sep=tab] {data/s21_linear_complex.txt};
 
-                        \addlegendentry{\Re{($S_{21}$)}}
-                        \addlegendentry{\Im{($S_{21}$)}}
+                        \addlegendentry{$\Re{(S_{21})}$}
+                        \addlegendentry{$\Im{(S_{21})}$}
 
                     \end{axis}
                 \end{tikzpicture}
@@ -217,15 +213,14 @@
             \end{minipage}
         \end{center}
        
-        The relative permittivity (\epsilon) and permeability (\mu) are extracted 
-        from the $S_{11}$ and $S_{12}$ parameters. Their imaginary parts are shown 
-        in Figure (\ref{plt:EpsilonMu}).
+        The effective permittivity (\epsilon) and permeability (\mu) can be extracted 
+        from the $S$ parameters but here are presented as extracted from the simulation.
         \begin{center}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
-                        title={\textsf{A/f}},
-                        xlabel={Frequency}, ylabel={Absorptivity},
+                        title={\textsf{Absorptivity}},
+                        xlabel={Frequency (GHz)}, ylabel={A},
                         ymin=0.8, ymax=1 
                     ] \addplot table[x=freq, y=A, col sep=space] {data/Absorptivity_freq.txt};
                     \end{axis}
@@ -236,7 +231,7 @@
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
                     \begin{axis}[ 
-                        title={\textsf{Relative Permittivity \& Permeability}},
+                        title={\textsf{Permittivity \& Permeability}},
                         xlabel={Frequency (GHz)}, ylabel={$\epsilon_{eff} \& \mu_{eff}$},
                         legend pos=north east 
                     ]   
@@ -246,10 +241,10 @@
                         \addplot table[x=freq, y=Re, col sep=tab] {data/Mu.txt};
                         \addplot[dashed] table[x=freq, y=Im, col sep=tab] {data/Mu.txt};
     
-                        \addlegendentry{\Re{(\epsilon)}}
-                        \addlegendentry{\Im{(\epsilon)}}
-                        \addlegendentry{\Re{(\mu)}}
-                        \addlegendentry{\Im{(\mu)}}
+                        \addlegendentry{$\Re{(\epsilon)}$}
+                        \addlegendentry{$\Im{(\epsilon)}$}
+                        \addlegendentry{$\Re{(\mu)}$}
+                        \addlegendentry{$\Im{(\mu)}$}
                     
                     \end{axis}
                 \end{tikzpicture}
@@ -381,7 +376,9 @@
             \end{align}
         \end{subequations}
 
-       
+        In the (\ref{plt:refractiveIndex}) and (\ref{plt:normalizedImpedanceCST}) 
+        however, the normalized \footnote{or intrinsic} impedance is
+        calculated from CST after the simulation.
         \begin{center}
             \begin{minipage}{.45\textwidth}
                 \begin{tikzpicture}
@@ -393,8 +390,8 @@
                         \addplot table[x=freq, y=n_Re, col sep=tab] {data/refractiveIndex.txt};
                         \addplot table[x=freq, y=n_Im, col sep=tab] {data/refractiveIndex.txt};
     
-                        \addlegendentry{\Re{($n$)}}
-                        \addlegendentry{\Im{($n$)}}
+                        \addlegendentry{$\Re{(n)}$}
+                        \addlegendentry{$\Im{(n)}$}
                     \end{axis}
                 \end{tikzpicture}
                 % \caption{\textsf{refractiveIndex}}
@@ -410,8 +407,8 @@
                         \addplot table[x=freq, y=z_Re, col sep=tab] {data/intrinsic_z.txt};
                         \addplot table[x=freq, y=z_Im, col sep=tab] {data/intrinsic_z.txt};
     
-                        \addlegendentry{\Re{($z$)}}
-                        \addlegendentry{\Im{($z$)}}
+                        \addlegendentry{$\Re{(z)}$}
+                        \addlegendentry{$\Im{(z)}$}
                     \end{axis}
                 \end{tikzpicture}
                 % \caption{\textsf{Normalized Impedance CST}}
@@ -419,24 +416,26 @@
             \end{minipage}
         \end{center}
 
-        The exponential term is.
+        The exponential term that represents the phase of the wave across
+        the entire frequency range. The wave number $\beta$ is the same
+        as $\kappa$ in \ref{eq:intrinsicImpedance}.
 
         \begin{figure}[h]
             \centering
             \begin{tikzpicture}
                 \begin{axis}[ 
                     title={\textsf{Exponential Term}},
-                    xlabel={Frequency (GHz)}, ylabel={$e^{-j\kappa z}$},
+                    xlabel={Frequency (GHz)}, ylabel={$e^{-j(\omega t + \beta\hat{z})}$},
                     legend pos=north west
                 ] 
                     \addplot table[x=freq, y=ExpTerm_Re, col sep=tab] {data/exp_term.txt};
                     \addplot table[x=freq, y=ExpTerm_Im, col sep=tab] {data/exp_term.txt};
 
-                    \addlegendentry{\Re{($e^{-j\kappa z}$)}}
-                    \addlegendentry{\Im{($e^{-j\kappa z}$)}}
+                    \addlegendentry{$\Re{(e^{-j(\omega t + \beta\hat{z})})}$}
+                    \addlegendentry{$\Im{(e^{-j(\omega t + \beta\hat{z})})}$}
                 \end{axis}
             \end{tikzpicture}
-            \caption{\textsf{exponential}}
+            \caption{\textsf{Exponential term against frequency}}
             \label{plt:exp}
         \end{figure}
 
