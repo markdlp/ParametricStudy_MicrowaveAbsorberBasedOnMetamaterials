@@ -31,32 +31,49 @@
         \item Maximum number of iterations
     \end{itemize}
 
-    \dots
-    
-    It is also worth stating that there are parameters that cannot be optimized using the
-    method above. While equivalent circuit and transmission line models are valuable tools, 
-    they simplify the complex electromagnetic behavior of metamaterial absorbers. 
+    \subsection{\textsf{CST Optimizer}}
+        In this study however the optimization step will be performed by the built in optimizer
+        in CST. In greater detail the parametric optimizer is used as it can optimize multiple
+        parameters at once.
 
-    \begin{itemize}
-        \item \textbf{Fine Geometric Details} : Equivalent circuit models often represent the 
-            metamaterial structure with lumped elements. Fine geometric details of the 
-            structure (e.g., the exact shape of the metallic patterns, small variations in
-            dimensions) that can significantly affect the absorber's performance are not 
-            easily captured by these models.
-        \item \textbf{Complex Electromagnetic Interactions} : Metamaterials exhibit complex
-            electromagnetic interactions, such as near-field coupling between adjacent 
-            elements and high-order resonances. These effects may not be fully accounted for 
-            in simplified circuit models.
-        \item \textbf{Angle of Incidence Effects} : The angle at which the electromagnetic 
-            wave hits the absorber can significantly affect its performance. Circuit models
-            typically do not incorporate these angle-dependent effects accurately.
-        \item \textbf{Polarization Effects} : While some circuit models can be adapted to 
-            consider polarization, accurately capturing complex polarization behavior, 
-            especially in anisotropic structures, can be challenging.
-        \item \textbf{Material Dispersion} : The frequency dependence of the material 
-            properties (permittivity and permeability) can be difficult to model precisely 
-            with lumped circuit elements, especially over broad frequency ranges.
-    \end{itemize}
+        The parameters chosen to be optimized affect the resistor placement and the area around 
+        them as shown in figure (\ref{img:resistors}), these are:
+        \begin{itemize}
+            \item \texttt{Lh} : The height of resistor placement along the \textsf{z} axis
+                with values between 0 and $d=0.035mm$.
+            \item \texttt{Oa} : The separation width near the arrows along the $y=x$ line
+                with values between $0.001$ and $\sqrt{2}$.
+            \item \texttt{Oo} : The separation with near the ring along the circle that has a 
+                radius of $r=r_1+\frac{(r_2-r1)}{2}$, with $r_1=2mm$ and $r_2=2.7mm$ and with 
+                values between $0.001$ and $0.1mm$ on each side $0.2mm$ in total.
+        \end{itemize}
+        
+        \dots
+        
+        It is also worth stating that there are parameters that cannot be optimized using the
+        method above. While equivalent circuit and transmission line models are valuable tools, 
+        they simplify the complex electromagnetic behavior of metamaterial absorbers. 
+
+        \begin{itemize}
+            \item \textbf{Fine Geometric Details} : Equivalent circuit models often represent the 
+                metamaterial structure with lumped elements. Fine geometric details of the 
+                structure (e.g., the exact shape of the metallic patterns, small variations in
+                dimensions) that can significantly affect the absorber's performance are not 
+                easily captured by these models.
+            \item \textbf{Complex Electromagnetic Interactions} : Metamaterials exhibit complex
+                electromagnetic interactions, such as near-field coupling between adjacent 
+                elements and high-order resonances. These effects may not be fully accounted for 
+                in simplified circuit models.
+            \item \textbf{Angle of Incidence Effects} : The angle at which the electromagnetic 
+                wave hits the absorber can significantly affect its performance. Circuit models
+                typically do not incorporate these angle-dependent effects accurately.
+            \item \textbf{Polarization Effects} : While some circuit models can be adapted to 
+                consider polarization, accurately capturing complex polarization behavior, 
+                especially in anisotropic structures, can be challenging.
+            \item \textbf{Material Dispersion} : The frequency dependence of the material 
+                properties (permittivity and permeability) can be difficult to model precisely 
+                with lumped circuit elements, especially over broad frequency ranges.
+        \end{itemize}
 
 \section{\textsf{Discussion}}
     \par This study has demonstrated the potential of metamaterial-based microwave absorbers
