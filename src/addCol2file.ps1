@@ -1,6 +1,6 @@
 # Define the paths to the files
 $s11FilePath = "data\s11.txt"
-$zFilePath = "data\mu_eff.txt"
+$zFilePath = "data\Optimized_A.txt"
 
 # Read the first column from s11.txt
 $firstColumn = Get-Content $s11FilePath | ForEach-Object {
