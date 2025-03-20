@@ -1,0 +1,11 @@
+Initial goal function value = 0.0882249 (Solver)
+Best goal function value    = 0.0795194 (Solver)
+Last goal function value    = 0.0795194 (Solver)
+
+Total solver time           = 02:40:38 h (14 solver runs)
+Total data recovery time    = 00:00:31 h (2 loaded)
+Total parameter update time = 00:02:33 h
+Total backup project time   = 00:00:45 h (4 backups)
+Total optimizer time        = 02:44:31 h (16 evaluations)
+
+Optimization successfully improved the goal value. Best parameter set is stored.

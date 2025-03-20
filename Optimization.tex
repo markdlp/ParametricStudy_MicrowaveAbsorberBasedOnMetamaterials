@@ -62,10 +62,27 @@
         have affected it.}. The Absorbance however, even thought it appears to have increased on 
         average across the frequency range, the difference is negligible.
 
-        CST provides a number of different solvers that can set Absorbance maximization as a goal.
+        CST provides a number of different solvers that can set Absorbance maximization as a goal
+        function. For this optimization problem the \textsf{Trust Region Framework} is used. It is
+        a local optimization solver that can be used globally doing multiple local optimizations for
+        all parameters.
 
-        \dots
+        \begin{verbatim}
+            Initial goal function value = 0.0882249 (Solver)
+            Best goal function value    = 0.0795194 (Solver)
+            Last goal function value    = 0.0795194 (Solver)
 
+            Total solver time           = 02:40:38 h (14 solver runs)
+            Total data recovery time    = 00:00:31 h (2 loaded)
+            Total parameter update time = 00:02:33 h
+            Total backup project time   = 00:00:45 h (4 backups)
+            Total optimizer time        = 02:44:31 h (16 evaluations)
+
+            Optimization successfully improved the goal value. Best parameter set is stored.
+        \end{verbatim}
+
+        It can be observed that the optimizer run 14 times which is considered small for
+        three parameters and it is therefore possible to have hit a local minimum.
 
         \begin{landscape}
             \begin{table}
@@ -110,7 +127,7 @@
                         ] \addplot table[x=freq, y=A, col sep=space] {data/Optimized_A.txt};
                         \end{axis}
                     \end{tikzpicture} \\
-                    
+                    \hline
                     \begin{tikzpicture}
                         \begin{axis}[ 
                             title={\textsf{Permittivity \& Permeability}},
