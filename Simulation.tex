@@ -19,7 +19,7 @@
 
         The dielectric substrate also includes a metallic component, which
         is made of the same material as the metal backplate—copper, with
-        a conductivity of (5.96 \mu $10^7$ S/m).
+        a conductivity of ($5.96 \mu 10^7 \frac{S}{m}$).
 
         Initially, the FR-4 substrate is placed without the metal 
         resonance layer. The other two layers are positioned below $Z=0$. 
@@ -147,20 +147,48 @@
         the second line of figure (\ref{img:E}) shows the electrical field for 
         $Z_{max}(2)$.
 
-        \begin{figure}[h]
-            \centering
-            \begin{tabular}{ccc}
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_027e2MHz.png}&
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_077e2MHz.png}&
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_127e2MHz.png}\\
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_027e2MHz.png}&
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_077e2MHz.png}&
-                \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_127e2MHz.png}\\
-            \end{tabular}
-            \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}$}
-            \label{img:E}
-        \end{figure}
+        % \begin{figure}[h]
+        %     \centering
+        %     \begin{tabular}{ccc}
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_027e2MHz.png}&
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_077e2MHz.png}&
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax1_127e2MHz.png}\\
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_027e2MHz.png}&
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_077e2MHz.png}&
+        %         \includegraphics[page=1, width=0.31\textwidth]{E_Zmax2_127e2MHz.png}\\
+        %     \end{tabular}
+        %     \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}$}
+        %     \label{img:E}
+        % \end{figure}
 
+        % \begin{figure}[htpb]
+        %     \centering
+        %     \begin{tabular}{ccc}
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax1_027e2MHz/E_Zmax1_027e2MHz-}{0}{89}&
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax1_077e2MHz/E_Zmax1_077e2MHz-}{0}{89}&
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax1_127e2MHz/E_Zmax1_127e2MHz-}{0}{89}\\
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax2_027e2MHz/E_Zmax2_027e2MHz-}{0}{89}&
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax2_077e2MHz/E_Zmax2_077e2MHz-}{0}{89}&
+        %         \animategraphics[width=0.31\textwidth, timeline=timeline.txt]{4}{img/E_Zmax2_127e2MHz/E_Zmax2_127e2MHz-}{0}{89}\\
+        %     \end{tabular}
+        %     \caption{Electrical Field for [2.7, 7.7, 12.7] GHz $Z_{max}$}
+        %     \label{img:E}
+        % \end{figure}
+
+    \begin{figure}[htpb]
+        \centering
+        \begin{tabular}{ccc}
+            \videogriditem{0.31\textwidth}{video/E_Zmax1_027e2MHz.mkv}{E_Zmax1_027e2MHz.png} &
+            \videogriditem{0.31\textwidth}{video/E_Zmax1_077e2MHz.mkv}{E_Zmax1_077e2MHz.png} &
+            \videogriditem{0.31\textwidth}{video/E_Zmax1_127e2MHz.mkv}{E_Zmax1_127e2MHz.png} \\[1ex]
+            
+            \videogriditem{0.31\textwidth}{video/E_Zmax2_027e2MHz.mkv}{E_Zmax2_027e2MHz.png} &
+            \videogriditem{0.31\textwidth}{video/E_Zmax2_077e2MHz.mkv}{E_Zmax2_077e2MHz.png} &
+            \videogriditem{0.31\textwidth}{video/E_Zmax2_127e2MHz.mkv}{E_Zmax2_127e2MHz.png} \\
+        \end{tabular}
+        \caption{Electrical Field for 2.7, 7.7, and 12.7 GHz $Z_{max}$.}
+        \label{img:E}
+    \end{figure}
 
         Taking a look in the $S_{11}$ of $Z_{max}$ that represents the reflection
         coefficient as well as the $S_{21}$ that represents the port coupling, after the
@@ -213,7 +241,7 @@
             \end{minipage}
         \end{center}
        
-        The effective permittivity (\epsilon) and permeability (\mu) can be extracted 
+        The effective permittivity ($\epsilon$) and permeability ($\mu$) can be extracted 
         from the $S$ parameters but here are presented as extracted from the simulation
         in \ref{plt:EpsilonMu}.
 

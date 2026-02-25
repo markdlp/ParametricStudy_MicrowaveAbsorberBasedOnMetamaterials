@@ -51,6 +51,8 @@
 
 \usepackage{polyglossia}
 
+\usepackage{animate}
+
 \usepackage[dvipsnames]{xcolor} %red, green, blue, yellow, cyan, magenta, black, white
 
 % This is the color used for MATLAB comments below
@@ -126,7 +128,24 @@
 \sloppy
 \epstopdfsetup{outdir=./}
 \graphicspath{ {img} }
-%\addmediapath{ {video} }
+% \addmediapath{ {video} }
+
+% Custom command for video posters in a grid
+% Usage: \videogriditem{width}{video_file}{image_file}
+\newcommand{\videogriditem}[3]{%
+    \href{run:#2}{%
+        \begin{tikzpicture}
+            % 1. Insert the image using the provided width
+            \node[inner sep=0pt] (img) {\includegraphics[width=#1]{#3}};
+            % 2. Draw a smaller, semi-transparent black circle
+            \fill[black, opacity=0.6] (img.center) circle (0.5cm);
+            % 3. Draw a proportionally smaller white "Play" triangle
+            \fill[white, shift={(img.center)}] (-0.15,-0.2) -- (-0.15,0.2) -- (0.25,0) -- cycle;
+            % 4. Add the border
+            \draw[white, thick, opacity=0.8] (img.center) circle (0.5cm);
+        \end{tikzpicture}%
+    }%
+}
 
 \setmainfont[Ligatures=TeX,Numbers=Lining]{Linux Libertine}
 \setsansfont[Kerning=On]{Atkinson Hyperlegible}
